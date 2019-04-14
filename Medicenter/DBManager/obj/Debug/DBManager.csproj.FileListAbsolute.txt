@@ -10,3 +10,15 @@ C:\Users\Soldier4\Documents\VS Projects\Medicenter\DBManager\obj\Debug\DBManager
 C:\Users\Soldier4\Documents\VS Projects\Medicenter\DBManager\bin\Debug\DBManager.dll.config
 C:\Users\Soldier4\Documents\VS Projects\Medicenter\DBManager\bin\Debug\DBManager.dll
 C:\Users\Soldier4\Documents\VS Projects\Medicenter\DBManager\obj\Debug\DBManager.dll
+C:\Users\Javier\Documents\medicenter\Medicenter\DBManager\bin\Debug\DBManager.dll.config
+C:\Users\Javier\Documents\medicenter\Medicenter\DBManager\bin\Debug\DBManager.dll
+C:\Users\Javier\Documents\medicenter\Medicenter\DBManager\bin\Debug\DBManager.pdb
+C:\Users\Javier\Documents\medicenter\Medicenter\DBManager\bin\Debug\MySql.Data.dll
+C:\Users\Javier\Documents\medicenter\Medicenter\DBManager\bin\Debug\MySql.Data.xml
+C:\Users\Javier\Documents\medicenter\Medicenter\DBManager\obj\Debug\DBManager.csprojAssemblyReference.cache
+C:\Users\Javier\Documents\medicenter\Medicenter\DBManager\obj\Debug\DBManager.Properties.Resources.resources
+C:\Users\Javier\Documents\medicenter\Medicenter\DBManager\obj\Debug\DBManager.csproj.GenerateResource.cache
+C:\Users\Javier\Documents\medicenter\Medicenter\DBManager\obj\Debug\DBManager.csproj.CoreCompileInputs.cache
+C:\Users\Javier\Documents\medicenter\Medicenter\DBManager\obj\Debug\DBManager.csproj.CopyComplete
+C:\Users\Javier\Documents\medicenter\Medicenter\DBManager\obj\Debug\DBManager.dll
+C:\Users\Javier\Documents\medicenter\Medicenter\DBManager\obj\Debug\DBManager.pdb

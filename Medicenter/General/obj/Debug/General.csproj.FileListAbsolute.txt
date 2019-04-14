@@ -15,3 +15,20 @@ C:\Users\Soldier4\Documents\VS Projects\Medicenter\General\obj\Debug\General.csp
 C:\Users\Soldier4\Documents\VS Projects\Medicenter\General\obj\Debug\General.dll
 C:\Users\Soldier4\Documents\VS Projects\Medicenter\General\obj\Debug\General.pdb
 C:\Users\Soldier4\Documents\VS Projects\Medicenter\General\obj\Debug\General.GUI.EdicionEmpleados.resources
+C:\Users\Javier\Documents\medicenter\Medicenter\General\bin\Debug\General.dll
+C:\Users\Javier\Documents\medicenter\Medicenter\General\bin\Debug\General.pdb
+C:\Users\Javier\Documents\medicenter\Medicenter\General\bin\Debug\CacheManager.dll
+C:\Users\Javier\Documents\medicenter\Medicenter\General\bin\Debug\DBManager.dll
+C:\Users\Javier\Documents\medicenter\Medicenter\General\bin\Debug\MySql.Data.dll
+C:\Users\Javier\Documents\medicenter\Medicenter\General\bin\Debug\CacheManager.pdb
+C:\Users\Javier\Documents\medicenter\Medicenter\General\bin\Debug\DBManager.pdb
+C:\Users\Javier\Documents\medicenter\Medicenter\General\bin\Debug\DBManager.dll.config
+C:\Users\Javier\Documents\medicenter\Medicenter\General\bin\Debug\MySql.Data.xml
+C:\Users\Javier\Documents\medicenter\Medicenter\General\obj\Debug\General.csprojAssemblyReference.cache
+C:\Users\Javier\Documents\medicenter\Medicenter\General\obj\Debug\General.GUI.EdicionEmpleados.resources
+C:\Users\Javier\Documents\medicenter\Medicenter\General\obj\Debug\General.GUI.GestionEmpleados.resources
+C:\Users\Javier\Documents\medicenter\Medicenter\General\obj\Debug\General.csproj.GenerateResource.cache
+C:\Users\Javier\Documents\medicenter\Medicenter\General\obj\Debug\General.csproj.CoreCompileInputs.cache
+C:\Users\Javier\Documents\medicenter\Medicenter\General\obj\Debug\General.csproj.CopyComplete
+C:\Users\Javier\Documents\medicenter\Medicenter\General\obj\Debug\General.dll
+C:\Users\Javier\Documents\medicenter\Medicenter\General\obj\Debug\General.pdb
