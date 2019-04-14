@@ -1,0 +1,24 @@
+C:\Users\Soldier4\Documents\VS Projects\Medicenter\DBManager\bin\Debug\DBManager.pdb
+C:\Users\Soldier4\Documents\VS Projects\Medicenter\DBManager\bin\Debug\MySql.Data.dll
+C:\Users\Soldier4\Documents\VS Projects\Medicenter\DBManager\bin\Debug\MySql.Data.xml
+C:\Users\Soldier4\Documents\VS Projects\Medicenter\DBManager\obj\Debug\DBManager.Properties.Resources.resources
+C:\Users\Soldier4\Documents\VS Projects\Medicenter\DBManager\obj\Debug\DBManager.csproj.GenerateResource.cache
+C:\Users\Soldier4\Documents\VS Projects\Medicenter\DBManager\obj\Debug\DBManager.csproj.CoreCompileInputs.cache
+C:\Users\Soldier4\Documents\VS Projects\Medicenter\DBManager\obj\Debug\DBManager.csproj.CopyComplete
+C:\Users\Soldier4\Documents\VS Projects\Medicenter\DBManager\obj\Debug\DBManager.pdb
+C:\Users\Soldier4\Documents\VS Projects\Medicenter\DBManager\obj\Debug\DBManager.csprojAssemblyReference.cache
+C:\Users\Soldier4\Documents\VS Projects\Medicenter\DBManager\bin\Debug\DBManager.dll.config
+C:\Users\Soldier4\Documents\VS Projects\Medicenter\DBManager\bin\Debug\DBManager.dll
+C:\Users\Soldier4\Documents\VS Projects\Medicenter\DBManager\obj\Debug\DBManager.dll
+C:\Users\Soldier4\Documents\VS Projects\Windows Forms\Medicenter\DBManager\bin\Debug\DBManager.dll.config
+C:\Users\Soldier4\Documents\VS Projects\Windows Forms\Medicenter\DBManager\bin\Debug\DBManager.dll
+C:\Users\Soldier4\Documents\VS Projects\Windows Forms\Medicenter\DBManager\bin\Debug\DBManager.pdb
+C:\Users\Soldier4\Documents\VS Projects\Windows Forms\Medicenter\DBManager\bin\Debug\MySql.Data.dll
+C:\Users\Soldier4\Documents\VS Projects\Windows Forms\Medicenter\DBManager\bin\Debug\MySql.Data.xml
+C:\Users\Soldier4\Documents\VS Projects\Windows Forms\Medicenter\DBManager\obj\Debug\DBManager.csprojAssemblyReference.cache
+C:\Users\Soldier4\Documents\VS Projects\Windows Forms\Medicenter\DBManager\obj\Debug\DBManager.Properties.Resources.resources
+C:\Users\Soldier4\Documents\VS Projects\Windows Forms\Medicenter\DBManager\obj\Debug\DBManager.csproj.GenerateResource.cache
+C:\Users\Soldier4\Documents\VS Projects\Windows Forms\Medicenter\DBManager\obj\Debug\DBManager.csproj.CoreCompileInputs.cache
+C:\Users\Soldier4\Documents\VS Projects\Windows Forms\Medicenter\DBManager\obj\Debug\DBManager.csproj.CopyComplete
+C:\Users\Soldier4\Documents\VS Projects\Windows Forms\Medicenter\DBManager\obj\Debug\DBManager.dll
+C:\Users\Soldier4\Documents\VS Projects\Windows Forms\Medicenter\DBManager\obj\Debug\DBManager.pdb
