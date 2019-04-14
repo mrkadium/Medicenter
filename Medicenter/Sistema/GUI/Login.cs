@@ -34,11 +34,11 @@ namespace Sistema.GUI
                 if(DatosUsuario.Rows.Count == 1)
                 {
                     _Autorizado = true;
-                    _SESION.oUsuario.IDUsuario = DatosUsuario.Rows[0]["idUsuario"].ToString();
+                    _SESION.oUsuario.IDUsuario = DatosUsuario.Rows[0]["idusuario"].ToString();
                     _SESION.oUsuario.Usuario1 = DatosUsuario.Rows[0]["usuario"].ToString();
                     _SESION.oUsuario.Rol = DatosUsuario.Rows[0]["rol"].ToString();
-                    _SESION.oUsuario.IDRol = DatosUsuario.Rows[0]["idRol"].ToString();
-                    _SESION.oUsuario.IDEmpleado = DatosUsuario.Rows[0]["idEmpleado"].ToString();
+                    _SESION.oUsuario.IDRol = DatosUsuario.Rows[0]["idrol"].ToString();
+                    _SESION.oUsuario.IDEmpleado = DatosUsuario.Rows[0]["idempleado"].ToString();
                     _SESION.oUsuario.Empleado = DatosUsuario.Rows[0]["empleado"].ToString();
                     Close();
                 }

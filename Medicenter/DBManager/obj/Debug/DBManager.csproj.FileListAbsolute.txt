@@ -10,7 +10,6 @@ C:\Users\Soldier4\Documents\VS Projects\Medicenter\DBManager\obj\Debug\DBManager
 C:\Users\Soldier4\Documents\VS Projects\Medicenter\DBManager\bin\Debug\DBManager.dll.config
 C:\Users\Soldier4\Documents\VS Projects\Medicenter\DBManager\bin\Debug\DBManager.dll
 C:\Users\Soldier4\Documents\VS Projects\Medicenter\DBManager\obj\Debug\DBManager.dll
-C:\Users\Javier\Documents\medicenter\Medicenter\DBManager\bin\Debug\DBManager.dll.config
 C:\Users\Javier\Documents\medicenter\Medicenter\DBManager\bin\Debug\DBManager.dll
 C:\Users\Javier\Documents\medicenter\Medicenter\DBManager\bin\Debug\DBManager.pdb
 C:\Users\Javier\Documents\medicenter\Medicenter\DBManager\bin\Debug\MySql.Data.dll

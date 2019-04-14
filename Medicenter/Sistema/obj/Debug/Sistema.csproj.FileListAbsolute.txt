@@ -34,7 +34,6 @@ C:\Users\Javier\Documents\medicenter\Medicenter\Sistema\bin\Debug\CacheManager.p
 C:\Users\Javier\Documents\medicenter\Medicenter\Sistema\bin\Debug\General.pdb
 C:\Users\Javier\Documents\medicenter\Medicenter\Sistema\bin\Debug\SessionManager.pdb
 C:\Users\Javier\Documents\medicenter\Medicenter\Sistema\bin\Debug\DBManager.pdb
-C:\Users\Javier\Documents\medicenter\Medicenter\Sistema\bin\Debug\DBManager.dll.config
 C:\Users\Javier\Documents\medicenter\Medicenter\Sistema\bin\Debug\MySql.Data.xml
 C:\Users\Javier\Documents\medicenter\Medicenter\Sistema\obj\Debug\Sistema.csprojAssemblyReference.cache
 C:\Users\Javier\Documents\medicenter\Medicenter\Sistema\obj\Debug\Sistema.GUI.Login.resources

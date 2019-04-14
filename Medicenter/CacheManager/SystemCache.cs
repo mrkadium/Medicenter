@@ -15,12 +15,10 @@ namespace CacheManager
             StringBuilder Sentencia = new StringBuilder();
             DBManager.CLS.DBOperacion oConsulta = new DBManager.CLS.DBOperacion();
             Sentencia.Append(
-                @"select
-                    a.idUsuario, a.usuario,
-                    b.idRol, b.rol,
-                    c.idEmpleado, concat(c.nombres, ' ', c.apellidos) as empleado
-                from usuarios a, roles b, empleados c
-                where a.idRol = b.idRol and a.idEmpleado = c.idEmpleado and a.usuario = '"+pUsuario+"' and a.credencial = sha1('"+pClave+"'); ");
+                @"select a.idusuario, a.usuario, concat(d.nombres, ' ', d.apellidos) as empleado, 
+                a.idrol, b.rol, c.idempleado from usuarios a, roles b, usuarios_empleados c,
+                empleados d where a.idrol=b.idrol and a.idusuario = c.idempleado and 
+                c.idempleado = d.idempleado and a.usuario = '" + pUsuario+"' and a.clave = sha1('"+pClave+"'); ");
             try
             {
                 Resultado = oConsulta.EjecutarConsulta(Sentencia.ToString());

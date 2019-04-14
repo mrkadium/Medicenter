@@ -15,7 +15,6 @@ C:\Users\Javier\Documents\medicenter\Medicenter\CacheManager\bin\Debug\CacheMana
 C:\Users\Javier\Documents\medicenter\Medicenter\CacheManager\bin\Debug\DBManager.dll
 C:\Users\Javier\Documents\medicenter\Medicenter\CacheManager\bin\Debug\MySql.Data.dll
 C:\Users\Javier\Documents\medicenter\Medicenter\CacheManager\bin\Debug\DBManager.pdb
-C:\Users\Javier\Documents\medicenter\Medicenter\CacheManager\bin\Debug\DBManager.dll.config
 C:\Users\Javier\Documents\medicenter\Medicenter\CacheManager\bin\Debug\MySql.Data.xml
 C:\Users\Javier\Documents\medicenter\Medicenter\CacheManager\obj\Debug\CacheManager.csprojAssemblyReference.cache
 C:\Users\Javier\Documents\medicenter\Medicenter\CacheManager\obj\Debug\CacheManager.csproj.CoreCompileInputs.cache

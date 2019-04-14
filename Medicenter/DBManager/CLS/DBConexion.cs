@@ -10,7 +10,7 @@ namespace DBManager.CLS
     public class DBConexion
     {
         protected MySqlConnection oConexion;
-        String CadenaConexion = "Server=localhost;Port=3306;Database=sistema;Uid=root;Pwd=admin";
+        String CadenaConexion = "Server=localhost;Port=3306;Database=medicenter;Uid=root;Pwd=admin";
 
         protected Boolean Conectar()
         {

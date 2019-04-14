@@ -22,7 +22,6 @@ C:\Users\Javier\Documents\medicenter\Medicenter\General\bin\Debug\DBManager.dll
 C:\Users\Javier\Documents\medicenter\Medicenter\General\bin\Debug\MySql.Data.dll
 C:\Users\Javier\Documents\medicenter\Medicenter\General\bin\Debug\CacheManager.pdb
 C:\Users\Javier\Documents\medicenter\Medicenter\General\bin\Debug\DBManager.pdb
-C:\Users\Javier\Documents\medicenter\Medicenter\General\bin\Debug\DBManager.dll.config
 C:\Users\Javier\Documents\medicenter\Medicenter\General\bin\Debug\MySql.Data.xml
 C:\Users\Javier\Documents\medicenter\Medicenter\General\obj\Debug\General.csprojAssemblyReference.cache
 C:\Users\Javier\Documents\medicenter\Medicenter\General\obj\Debug\General.GUI.EdicionEmpleados.resources
