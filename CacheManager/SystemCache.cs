@@ -37,6 +37,7 @@ namespace CacheManager
             }
             return Resultado;
         }
+
         public static DataTable ValidarMedico(String pUsuario, String pClave)
         {
             DataTable Resultado = new DataTable();
@@ -65,13 +66,52 @@ namespace CacheManager
             }
             return Resultado;
         }
+
+        public static DataTable getUsuario(String pUsuario, String pCredencial, String pIdRol, String pEstado)
+        {
+            DataTable Resultado = new DataTable();
+            StringBuilder Sentencia = new StringBuilder();
+            DBManager.CLS.DBOperacion oConsulta = new DBManager.CLS.DBOperacion();
+            Sentencia.Append("SELECT idusuario FROM usuarios WHERE");
+            Sentencia.Append(" usuario = '" + pUsuario + "'");
+            Sentencia.Append(" AND credencial = sha1('" + pCredencial + "')");
+            Sentencia.Append(" AND idrol = '" + pIdRol + "'");
+            Sentencia.Append(" AND estado = '" + pEstado + "';");
+
+            try
+            {
+                Resultado = oConsulta.EjecutarConsulta(Sentencia.ToString());
+            }
+            catch
+            {
+                Resultado = new DataTable();
+            }
+            return Resultado;
+        }
+
         public static DataTable Todos_empleados()
         {
             DataTable Resultado = new DataTable();
             StringBuilder Sentencia = new StringBuilder();
             DBManager.CLS.DBOperacion oConsulta = new DBManager.CLS.DBOperacion();
             Sentencia.Append(
-                @"select * from empleados order by apellidos, nombres;");
+                @"SELECT
+	                a.idempleado,
+                    a.nombres,
+                    a.apellidos,
+                    a.genero,
+                    a.fecha_nacimiento,
+                    a.dui,
+                    a.nit,
+                    c.departamento,
+                    a.municipio,
+                    a.direccion,
+                    b.cargo,
+                    a.fechacontratacion,
+                    a.fechasalida,
+                    a.estado
+                FROM empleados a, cargos b, departamentos c
+                WHERE a.idcargo = b.idcargo AND c.iddepartamento = a.iddepartamento;");
             try
             {
                 Resultado = oConsulta.EjecutarConsulta(Sentencia.ToString());
@@ -82,23 +122,25 @@ namespace CacheManager
             }
             return Resultado;
         }
-        public static DataTable Todos_usuarios()
+
+        public static DataTable Todos_medicos()
         {
             DataTable Resultado = new DataTable();
             StringBuilder Sentencia = new StringBuilder();
             DBManager.CLS.DBOperacion oConsulta = new DBManager.CLS.DBOperacion();
             Sentencia.Append(
                 @"SELECT
-	                a.idUsuario,
-	                a.usuario,
-                    a.credencial,
-                    a.idEmpleado,
-                    concat(b.nombres,' ', b.apellidos) as empleado,
-                    a.idRol,
-                    c.rol,
+	                a.jvpm,
+                    a.nombres,
+                    a.apellidos,
+                    a.fecha_nacimiento,
+                    a.dui,
+                    a.nit,
+                    concat(a.direccion,', ',a.municipio,', ', (SELECT departamento FROM departamentos WHERE iddepartamento = a.iddepartamento)) as direccion,
+                    a.fechacontratacion,
+                    a.fechasalida,
                     a.estado
-                FROM usuarios a, empleados b, roles c
-                WHERE a.idEmpleado = b.idEmpleado AND a.idRol = c.idRol;");
+                FROM medicos a;");
             try
             {
                 Resultado = oConsulta.EjecutarConsulta(Sentencia.ToString());
@@ -109,6 +151,69 @@ namespace CacheManager
             }
             return Resultado;
         }
+
+        public static DataTable Todos_usuarios_empleados()
+        {
+            DataTable Resultado = new DataTable();
+            StringBuilder Sentencia = new StringBuilder();
+            DBManager.CLS.DBOperacion oConsulta = new DBManager.CLS.DBOperacion();
+            Sentencia.Append(
+                @"SELECT
+	                a.idusuario,
+                    a.usuario,
+                    a.credencial,
+                    a.idrol, b.rol,
+                    c.idempleado,
+                    concat(c.nombres, ' ', c.apellidos) as empleado,
+                    a.estado
+                FROM usuarios a, roles b, empleados c, usuarios_empleados d
+                WHERE 
+	                a.idrol = b.idrol 
+                    AND a.idusuario = d.idusuario 
+                    AND c.idempleado = d.idempleado
+                    AND usuario = 'mario.rivera' AND credencial = sha1('admin');");
+            try
+            {
+                Resultado = oConsulta.EjecutarConsulta(Sentencia.ToString());
+            }
+            catch
+            {
+                Resultado = new DataTable();
+            }
+            return Resultado;
+        }
+
+        public static DataTable Todos_usuarios_medicos()
+        {
+            DataTable Resultado = new DataTable();
+            StringBuilder Sentencia = new StringBuilder();
+            DBManager.CLS.DBOperacion oConsulta = new DBManager.CLS.DBOperacion();
+            Sentencia.Append(
+                @"SELECT
+	                a.idusuario,
+                    a.usuario,
+                    a.credencial,
+                    a.idrol, b.rol,
+                    c.jvpm,
+                    concat(c.nombres, ' ', c.apellidos) as medico,
+                    a.estado
+                FROM usuarios a, roles b, medicos c, usuarios_medicos d
+                WHERE 
+	                a.idrol = b.idrol 
+                    AND a.idusuario = d.idusuario 
+                    AND c.jvpm = d.jvpm_medico
+                    AND usuario = 'meredith.grey' AND credencial = sha1('admin');");
+            try
+            {
+                Resultado = oConsulta.EjecutarConsulta(Sentencia.ToString());
+            }
+            catch
+            {
+                Resultado = new DataTable();
+            }
+            return Resultado;
+        }
+
         public static DataTable Todos_roles()
         {
             DataTable Resultado = new DataTable();
@@ -116,6 +221,60 @@ namespace CacheManager
             DBManager.CLS.DBOperacion oConsulta = new DBManager.CLS.DBOperacion();
             Sentencia.Append(
                 @"SELECT * FROM roles;");
+            try
+            {
+                Resultado = oConsulta.EjecutarConsulta(Sentencia.ToString());
+            }
+            catch
+            {
+                Resultado = new DataTable();
+            }
+            return Resultado;
+        }
+
+        public static DataTable Todos_cargos()
+        {
+            DataTable Resultado = new DataTable();
+            StringBuilder Sentencia = new StringBuilder();
+            DBManager.CLS.DBOperacion oConsulta = new DBManager.CLS.DBOperacion();
+            Sentencia.Append(
+                @"SELECT * FROM cargos;");
+            try
+            {
+                Resultado = oConsulta.EjecutarConsulta(Sentencia.ToString());
+            }
+            catch
+            {
+                Resultado = new DataTable();
+            }
+            return Resultado;
+        }
+
+        public static DataTable Todos_departamentos()
+        {
+            DataTable Resultado = new DataTable();
+            StringBuilder Sentencia = new StringBuilder();
+            DBManager.CLS.DBOperacion oConsulta = new DBManager.CLS.DBOperacion();
+            Sentencia.Append(
+                @"SELECT * FROM departamentos;");
+            try
+            {
+                Resultado = oConsulta.EjecutarConsulta(Sentencia.ToString());
+            }
+            catch
+            {
+                Resultado = new DataTable();
+            }
+            return Resultado;
+        }
+
+        public static DataTable Contactos(String pPropietario, String pPara)
+        {
+            DataTable Resultado = new DataTable();
+            StringBuilder Sentencia = new StringBuilder();
+            DBManager.CLS.DBOperacion oConsulta = new DBManager.CLS.DBOperacion();
+            Sentencia.Append(
+                @"SELECT * FROM contactos WHERE idpropietario = '"+pPropietario+"' AND para = '"+pPara+"';");
             try
             {
                 Resultado = oConsulta.EjecutarConsulta(Sentencia.ToString());

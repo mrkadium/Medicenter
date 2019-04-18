@@ -4,3 +4,9 @@ C:\Users\Soldier4\Documents\VS Projects\Medicenter\SessionManager\obj\Debug\Sess
 C:\Users\Soldier4\Documents\VS Projects\Medicenter\SessionManager\obj\Debug\SessionManager.csproj.CoreCompileInputs.cache
 C:\Users\Soldier4\Documents\VS Projects\Medicenter\SessionManager\obj\Debug\SessionManager.dll
 C:\Users\Soldier4\Documents\VS Projects\Medicenter\SessionManager\obj\Debug\SessionManager.pdb
+C:\Users\Soldier4\Documents\repos\medicenter\SessionManager\bin\Debug\SessionManager.dll
+C:\Users\Soldier4\Documents\repos\medicenter\SessionManager\bin\Debug\SessionManager.pdb
+C:\Users\Soldier4\Documents\repos\medicenter\SessionManager\obj\Debug\SessionManager.csprojAssemblyReference.cache
+C:\Users\Soldier4\Documents\repos\medicenter\SessionManager\obj\Debug\SessionManager.csproj.CoreCompileInputs.cache
+C:\Users\Soldier4\Documents\repos\medicenter\SessionManager\obj\Debug\SessionManager.dll
+C:\Users\Soldier4\Documents\repos\medicenter\SessionManager\obj\Debug\SessionManager.pdb

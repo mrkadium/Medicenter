@@ -1,6 +1,6 @@
 ﻿namespace General.GUI
 {
-    partial class GestionUsuarios
+    partial class GestionUsuariosMedicos
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionUsuarios));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionUsuariosMedicos));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAgregar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -45,8 +45,8 @@
             this.IDUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Credencial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDEmpleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Empleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JVPM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Medico = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDRol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,8 +67,8 @@
             this.toolStripLabel1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(853, 25);
-            this.toolStrip1.TabIndex = 2;
+            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // btnAgregar
@@ -78,7 +78,7 @@
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(69, 22);
             this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click_1);
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // toolStripSeparator2
             // 
@@ -92,7 +92,6 @@
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(57, 22);
             this.btnEditar.Text = "Editar";
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click_1);
             // 
             // toolStripSeparator1
             // 
@@ -106,7 +105,6 @@
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(70, 22);
             this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click_1);
             // 
             // txbFiltro
             // 
@@ -114,7 +112,6 @@
             this.txbFiltro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txbFiltro.Name = "txbFiltro";
             this.txbFiltro.Size = new System.Drawing.Size(200, 25);
-            this.txbFiltro.TextChanged += new System.EventHandler(this.txbFiltro_TextChanged_1);
             // 
             // toolStripLabel1
             // 
@@ -129,8 +126,8 @@
             this.lblRegistros});
             this.statusStrip1.Location = new System.Drawing.Point(0, 428);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(853, 22);
-            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // lblRegistros
@@ -144,8 +141,8 @@
             this.dtgvDatos.AllowUserToAddRows = false;
             this.dtgvDatos.AllowUserToDeleteRows = false;
             this.dtgvDatos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.dtgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.dtgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgvDatos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgvDatos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dtgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -153,19 +150,19 @@
             this.IDUsuario,
             this.Usuario,
             this.Credencial,
-            this.IDEmpleado,
-            this.Empleado,
+            this.JVPM,
+            this.Medico,
             this.IDRol,
             this.Rol,
             this.Estado});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvDatos.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvDatos.DefaultCellStyle = dataGridViewCellStyle6;
             this.dtgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgvDatos.Location = new System.Drawing.Point(0, 25);
             this.dtgvDatos.MultiSelect = false;
@@ -173,9 +170,8 @@
             this.dtgvDatos.ReadOnly = true;
             this.dtgvDatos.RowHeadersVisible = false;
             this.dtgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgvDatos.Size = new System.Drawing.Size(853, 403);
-            this.dtgvDatos.TabIndex = 4;
-            this.dtgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvDatos_CellDoubleClick);
+            this.dtgvDatos.Size = new System.Drawing.Size(800, 403);
+            this.dtgvDatos.TabIndex = 5;
             // 
             // IDUsuario
             // 
@@ -203,21 +199,21 @@
             this.Credencial.Name = "Credencial";
             this.Credencial.ReadOnly = true;
             // 
-            // IDEmpleado
+            // JVPM
             // 
-            this.IDEmpleado.DataPropertyName = "idEmpleado";
-            this.IDEmpleado.HeaderText = "IDEmpleado";
-            this.IDEmpleado.Name = "IDEmpleado";
-            this.IDEmpleado.ReadOnly = true;
+            this.JVPM.DataPropertyName = "jvpm";
+            this.JVPM.HeaderText = "JVPM";
+            this.JVPM.Name = "JVPM";
+            this.JVPM.ReadOnly = true;
             // 
-            // Empleado
+            // Medico
             // 
-            this.Empleado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Empleado.DataPropertyName = "empleado";
-            this.Empleado.HeaderText = "Empleado";
-            this.Empleado.MinimumWidth = 150;
-            this.Empleado.Name = "Empleado";
-            this.Empleado.ReadOnly = true;
+            this.Medico.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Medico.DataPropertyName = "medico";
+            this.Medico.HeaderText = "Médico";
+            this.Medico.MinimumWidth = 150;
+            this.Medico.Name = "Medico";
+            this.Medico.ReadOnly = true;
             // 
             // IDRol
             // 
@@ -243,18 +239,18 @@
             this.Estado.ReadOnly = true;
             this.Estado.Width = 70;
             // 
-            // GestionUsuarios
+            // GestionUsuariosMedicos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(853, 450);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dtgvDatos);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
-            this.Name = "GestionUsuarios";
+            this.Name = "GestionUsuariosMedicos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GestionUsuarios";
-            this.Load += new System.EventHandler(this.GestionUsuarios_Load);
+            this.Text = "GestionUsuariosMedicos";
+            this.Load += new System.EventHandler(this.GestionUsuariosMedicos_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -281,8 +277,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IDUsuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Credencial;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDEmpleado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Empleado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JVPM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Medico;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDRol;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rol;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;

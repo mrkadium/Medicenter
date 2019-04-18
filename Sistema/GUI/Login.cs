@@ -90,5 +90,10 @@ namespace Sistema.GUI
                 Validar(txbUsuario.Text, txbCredencial.Text);
             }
         }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

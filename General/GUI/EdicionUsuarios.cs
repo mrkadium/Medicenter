@@ -22,8 +22,18 @@ namespace General.GUI
                 oUsuario.uUsuario = txbUsuario.Text;
                 oUsuario.Credencial = txbCredencial.Text;
                 oUsuario.IDRol = cmbRol.SelectedValue.ToString();
-                oUsuario.IDEmpleado = txbIdEmpleado.Text;
-                oUsuario.Estado = cmbEstado.SelectedValue.ToString();
+                
+                if(txbIdEmpleado.Text.Length == 0) //SI ES CERO, SERÁ EL JVPM
+                {
+                    oUsuario.IDEmpleado = txbJVPM.Text;
+                    oUsuario.Estado = cmbEstado.SelectedValue.ToString();
+                    oUsuario.Tipo = "MEDICO";
+                }
+                else //SINO, SERÁ EL IDEMPLEADO
+                {
+                    oUsuario.IDEmpleado = txbIdEmpleado.Text;
+                    oUsuario.Estado = cmbEstado.SelectedValue.ToString();
+                }
 
                 if (txbIdUsuario.Text.Length == 0)
                 {
@@ -66,9 +76,38 @@ namespace General.GUI
 
             return Verificado;
         }
+
+        class cmbEstadoClass
+        {
+            public String Dmember { get; set; }
+            public String Vmember { get; set; }
+            public cmbEstadoClass(String dmem, String vmem)
+            {
+                Dmember = dmem;
+                Vmember = vmem;
+            }
+            public cmbEstadoClass[] estados(){
+                return new cmbEstadoClass[] {
+                    new cmbEstadoClass("ACTIVO", "ACTIVO"),
+                    new cmbEstadoClass("BLOQUEADO", "BLOQUEADO")
+                };
+            }
+        }
+
         public EdicionUsuarios()
         {
             InitializeComponent();
+
+            //CARGANDO LOS COMBOBOX
+            cmbRol.DataSource = CacheManager.SystemCache.Todos_roles();
+            cmbRol.DisplayMember = "Rol";
+            cmbRol.ValueMember = "IdRol";
+            cmbEstado.DataSource = new cmbEstadoClass[] {
+                new cmbEstadoClass("ACTIVO", "ACTIVO"),
+                new cmbEstadoClass("BLOQUEADO", "BLOQUEADO")
+            };
+            cmbEstado.DisplayMember = "Dmember";
+            cmbEstado.ValueMember = "Vmember";
         }
 
         private void btnEmpleados_Click(object sender, EventArgs e)
@@ -83,7 +122,7 @@ namespace General.GUI
             f.btnEliminar.Visible = false;
 
             f.ShowDialog();
-            txbIdEmpleado.Text = f.dtgvDatos.CurrentRow.Cells["IdEmpleado"].Value.ToString();
+            txbIdEmpleado.Text = f.dtgvDatos.CurrentRow.Cells["idEmpleado"].Value.ToString();
             txbEmpleado.Text = f.dtgvDatos.CurrentRow.Cells["Nombres"].Value.ToString() + " " + f.dtgvDatos.CurrentRow.Cells["Apellidos"].Value.ToString();
         }
 
@@ -95,6 +134,22 @@ namespace General.GUI
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnMedicos_Click(object sender, EventArgs e)
+        {
+            GestionMedicos f = new GestionMedicos();
+
+            f.btnSeleccionar.Visible = true;
+            f.btnAgregar.Visible = false;
+            f.sep1.Visible = false;
+            f.btnEditar.Visible = false;
+            f.sep2.Visible = false;
+            f.btnEliminar.Visible = false;
+
+            f.ShowDialog();
+            txbJVPM.Text = f.dtgvDatos.CurrentRow.Cells["JVPM"].Value.ToString();
+            txbMedico.Text = f.dtgvDatos.CurrentRow.Cells["Nombres"].Value.ToString() + " " + f.dtgvDatos.CurrentRow.Cells["Apellidos"].Value.ToString();
         }
     }
 }

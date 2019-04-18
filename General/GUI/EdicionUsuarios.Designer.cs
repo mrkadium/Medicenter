@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EdicionUsuarios));
             this.btnEmpleados = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblEmpleado = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txbEmpleado = new System.Windows.Forms.TextBox();
@@ -46,24 +47,29 @@
             this.txbIdEmpleado = new System.Windows.Forms.TextBox();
             this.Notificador = new System.Windows.Forms.ErrorProvider(this.components);
             this.cmbRol = new System.Windows.Forms.ComboBox();
+            this.txbMedico = new System.Windows.Forms.TextBox();
+            this.btnMedicos = new System.Windows.Forms.Button();
+            this.lblMedico = new System.Windows.Forms.Label();
+            this.txbJVPM = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Notificador)).BeginInit();
             this.SuspendLayout();
             // 
             // btnEmpleados
             // 
+            this.btnEmpleados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEmpleados.BackgroundImage")));
+            this.btnEmpleados.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEmpleados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmpleados.Location = new System.Drawing.Point(399, 263);
+            this.btnEmpleados.Location = new System.Drawing.Point(407, 259);
             this.btnEmpleados.Name = "btnEmpleados";
-            this.btnEmpleados.Size = new System.Drawing.Size(44, 28);
+            this.btnEmpleados.Size = new System.Drawing.Size(35, 30);
             this.btnEmpleados.TabIndex = 6;
-            this.btnEmpleados.Text = "...";
             this.btnEmpleados.UseVisualStyleBackColor = true;
             this.btnEmpleados.Click += new System.EventHandler(this.btnEmpleados_Click);
             // 
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(138, 330);
+            this.btnGuardar.Location = new System.Drawing.Point(138, 340);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(99, 41);
             this.btnGuardar.TabIndex = 7;
@@ -74,7 +80,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(264, 330);
+            this.btnCancelar.Location = new System.Drawing.Point(264, 340);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(99, 41);
             this.btnCancelar.TabIndex = 8;
@@ -112,15 +118,15 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Rol";
             // 
-            // label4
+            // lblEmpleado
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(54, 239);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 16);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Empleado";
+            this.lblEmpleado.AutoSize = true;
+            this.lblEmpleado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmpleado.Location = new System.Drawing.Point(54, 266);
+            this.lblEmpleado.Name = "lblEmpleado";
+            this.lblEmpleado.Size = new System.Drawing.Size(71, 16);
+            this.lblEmpleado.TabIndex = 9;
+            this.lblEmpleado.Text = "Empleado";
             // 
             // label5
             // 
@@ -145,10 +151,10 @@
             // txbEmpleado
             // 
             this.txbEmpleado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbEmpleado.Location = new System.Drawing.Point(156, 264);
+            this.txbEmpleado.Location = new System.Drawing.Point(199, 263);
             this.txbEmpleado.Name = "txbEmpleado";
             this.txbEmpleado.ReadOnly = true;
-            this.txbEmpleado.Size = new System.Drawing.Size(237, 22);
+            this.txbEmpleado.Size = new System.Drawing.Size(202, 22);
             this.txbEmpleado.TabIndex = 12;
             // 
             // txbCredencial
@@ -189,10 +195,10 @@
             // txbIdEmpleado
             // 
             this.txbIdEmpleado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbIdEmpleado.Location = new System.Drawing.Point(58, 263);
+            this.txbIdEmpleado.Location = new System.Drawing.Point(138, 263);
             this.txbIdEmpleado.Name = "txbIdEmpleado";
             this.txbIdEmpleado.ReadOnly = true;
-            this.txbIdEmpleado.Size = new System.Drawing.Size(75, 22);
+            this.txbIdEmpleado.Size = new System.Drawing.Size(55, 22);
             this.txbIdEmpleado.TabIndex = 11;
             // 
             // Notificador
@@ -208,24 +214,68 @@
             this.cmbRol.Size = new System.Drawing.Size(215, 24);
             this.cmbRol.TabIndex = 5;
             // 
+            // txbMedico
+            // 
+            this.txbMedico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbMedico.Location = new System.Drawing.Point(199, 263);
+            this.txbMedico.Name = "txbMedico";
+            this.txbMedico.ReadOnly = true;
+            this.txbMedico.Size = new System.Drawing.Size(202, 22);
+            this.txbMedico.TabIndex = 12;
+            // 
+            // btnMedicos
+            // 
+            this.btnMedicos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMedicos.BackgroundImage")));
+            this.btnMedicos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMedicos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMedicos.Location = new System.Drawing.Point(407, 259);
+            this.btnMedicos.Name = "btnMedicos";
+            this.btnMedicos.Size = new System.Drawing.Size(35, 30);
+            this.btnMedicos.TabIndex = 6;
+            this.btnMedicos.UseVisualStyleBackColor = true;
+            this.btnMedicos.Click += new System.EventHandler(this.btnMedicos_Click);
+            // 
+            // lblMedico
+            // 
+            this.lblMedico.AutoSize = true;
+            this.lblMedico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMedico.Location = new System.Drawing.Point(54, 266);
+            this.lblMedico.Name = "lblMedico";
+            this.lblMedico.Size = new System.Drawing.Size(53, 16);
+            this.lblMedico.TabIndex = 9;
+            this.lblMedico.Text = "Médico";
+            // 
+            // txbJVPM
+            // 
+            this.txbJVPM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbJVPM.Location = new System.Drawing.Point(138, 263);
+            this.txbJVPM.Name = "txbJVPM";
+            this.txbJVPM.ReadOnly = true;
+            this.txbJVPM.Size = new System.Drawing.Size(55, 22);
+            this.txbJVPM.TabIndex = 11;
+            // 
             // EdicionUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(510, 432);
+            this.ClientSize = new System.Drawing.Size(498, 422);
             this.Controls.Add(this.cmbRol);
+            this.Controls.Add(this.txbJVPM);
             this.Controls.Add(this.txbIdEmpleado);
             this.Controls.Add(this.cmbEstado);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblMedico);
+            this.Controls.Add(this.lblEmpleado);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txbCredencial);
+            this.Controls.Add(this.btnMedicos);
             this.Controls.Add(this.btnEmpleados);
+            this.Controls.Add(this.txbMedico);
             this.Controls.Add(this.txbEmpleado);
             this.Controls.Add(this.txbUsuario);
             this.Controls.Add(this.txbIdUsuario);
@@ -239,13 +289,11 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnEmpleados;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.TextBox txbEmpleado;
@@ -256,5 +304,11 @@
         public System.Windows.Forms.TextBox txbIdEmpleado;
         private System.Windows.Forms.ErrorProvider Notificador;
         public System.Windows.Forms.ComboBox cmbRol;
+        public System.Windows.Forms.TextBox txbJVPM;
+        public System.Windows.Forms.TextBox txbMedico;
+        public System.Windows.Forms.Button btnEmpleados;
+        public System.Windows.Forms.Label lblEmpleado;
+        public System.Windows.Forms.Label lblMedico;
+        public System.Windows.Forms.Button btnMedicos;
     }
 }

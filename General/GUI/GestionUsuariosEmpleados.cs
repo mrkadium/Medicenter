@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace General.GUI
 {
-    public partial class GestionUsuarios : Form
+    public partial class GestionUsuariosEmpleados : Form
     {
-        BindingSource _Usuarios = new BindingSource();
+        BindingSource _UsuariosEmpleados = new BindingSource();
         private void CargarDatos()
         {
             try
             {
-                _Usuarios.DataSource = CacheManager.SystemCache.Todos_usuarios();
+                _UsuariosEmpleados.DataSource = CacheManager.SystemCache.Todos_usuarios_empleados();
                 FiltrarLocalmente();
             }
             catch { }
@@ -28,20 +28,20 @@ namespace General.GUI
             {
                 if (txbFiltro.TextLength > 0)
                 {
-                    _Usuarios.Filter = "usuario LIKE '%" + txbFiltro.Text + "%' OR empleado LIKE '%" + txbFiltro.Text + "%' OR rol LIKE '%" + txbFiltro.Text + "%'";
+                    _UsuariosEmpleados.Filter = "usuario LIKE '%" + txbFiltro.Text + "%' OR empleado LIKE '%" + txbFiltro.Text + "%' OR rol LIKE '%" + txbFiltro.Text + "%'";
                     lblRegistros.Text = dtgvDatos.Rows.Count.ToString() + " Registros encontrados";
                 }
                 else
                 {
-                    _Usuarios.RemoveFilter();
+                    _UsuariosEmpleados.RemoveFilter();
                     dtgvDatos.AutoGenerateColumns = false;
-                    dtgvDatos.DataSource = _Usuarios;
+                    dtgvDatos.DataSource = _UsuariosEmpleados;
                     lblRegistros.Text = dtgvDatos.Rows.Count.ToString() + " Registros encontrados";
                 }
             }
             catch { }
         }
-        public GestionUsuarios()
+        public GestionUsuariosEmpleados()
         {
             InitializeComponent();
         }
@@ -61,40 +61,19 @@ namespace General.GUI
         {
         }
 
-        private void GestionUsuarios_Load(object sender, EventArgs e)
-        {
-            CargarDatos();
-        }
-
         private void txbFiltro_TextChanged_1(object sender, EventArgs e)
         {
             FiltrarLocalmente();
         }
-
-        class cmbEstado
-        {
-            public String Dmember { get; set; }
-            public String Vmember { get; set; }
-            public cmbEstado(String dmem, String vmem)
-            {
-                Dmember = dmem;
-                Vmember = vmem;
-            }
-        }
+        
         private void btnAgregar_Click_1(object sender, EventArgs e)
         {
             EdicionUsuarios f = new EdicionUsuarios();
-
-            //CARGANDO LOS COMBOBOX
-            f.cmbRol.DataSource = CacheManager.SystemCache.Todos_roles();
-            f.cmbRol.DisplayMember = "Rol";
-            f.cmbRol.ValueMember = "IdRol";
-            f.cmbEstado.DataSource = new cmbEstado[] {
-                new cmbEstado("ACTIVO", "ACTIVO"),
-                new cmbEstado("BLOQUEADO", "BLOQUEADO")
-            };
-            f.cmbEstado.DisplayMember = "Dmember";
-            f.cmbEstado.ValueMember = "Vmember";
+            //DESAPARECIENDO LOS ELEMENTOS PARA MÉDICOS, YA QUE ES EMPLEADO
+            f.lblMedico.Visible = false;
+            f.txbJVPM.Visible = false;
+            f.txbMedico.Visible = false;
+            f.btnMedicos.Visible = false;
 
             f.ShowDialog();
             CargarDatos();
@@ -105,18 +84,15 @@ namespace General.GUI
             if (MessageBox.Show("¿Realmente desea editar ese registro?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 EdicionUsuarios f = new EdicionUsuarios();
+                //DESAPARECIENDO LOS ELEMENTOS PARA MÉDICOS, YA QUE ES EMPLEADO
+                f.lblMedico.Visible = false;
+                f.txbJVPM.Visible = false;
+                f.txbMedico.Visible = false;
+                f.btnMedicos.Visible = false;
 
                 f.txbIdUsuario.Text = dtgvDatos.CurrentRow.Cells["IdUsuario"].Value.ToString();
                 f.txbUsuario.Text = dtgvDatos.CurrentRow.Cells["Usuario"].Value.ToString();
                 f.txbIdEmpleado.Text = dtgvDatos.CurrentRow.Cells["IdEmpleado"].Value.ToString();
-
-                //CARGANDO LOS COMBOBOX
-                f.cmbRol.DataSource = CacheManager.SystemCache.Todos_roles();
-                f.cmbRol.DisplayMember = "Rol";
-                f.cmbRol.ValueMember = "IdRol";
-                f.cmbEstado.DataSource = new cmbEstado[] {new cmbEstado("ACTIVO", "ACTIVO"),new cmbEstado("BLOQUEADO", "BLOQUEADO")};
-                f.cmbEstado.DisplayMember = "Dmember";
-                f.cmbEstado.ValueMember = "Vmember";
 
                 f.txbEmpleado.Text = dtgvDatos.CurrentRow.Cells["Empleado"].Value.ToString();
                 f.txbCredencial.Text = dtgvDatos.CurrentRow.Cells["Credencial"].Value.ToString();
@@ -150,6 +126,11 @@ namespace General.GUI
                     MessageBox.Show("Registro no borrado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+        }
+
+        private void GestionUsuariosEmpleados_Load(object sender, EventArgs e)
+        {
+            CargarDatos();
         }
     }
 }

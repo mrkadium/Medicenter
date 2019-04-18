@@ -23,8 +23,7 @@ namespace General.GUI
                 oEmpleado.FechaNacimiento = dtpFechaNacimiento.Text;
                 oEmpleado.DUI = txbDui.Text;
                 oEmpleado.NIT = txbNit.Text;
-                oEmpleado.Telefono = txbTelefono.Text;
-                oEmpleado.Direccion = txbDireccion.Text;
+                oEmpleado.Direccion = txbMunicipio.Text;
 
                 if(txbIdEmpleado.Text.Length == 0)
                 {
@@ -64,14 +63,28 @@ namespace General.GUI
             if (dtpFechaNacimiento.Text.Length <= 0) { Verificado = false; Notificador.SetError(dtpFechaNacimiento, "Este campo debe llenarse"); }
             if (txbDui.Text.Length <= 0) { Verificado = false; Notificador.SetError(txbDui, "Este campo debe llenarse"); }
             if (txbNit.Text.Length <= 0) { Verificado = false; Notificador.SetError(txbNit, "Este campo debe llenarse"); }
-            if (txbTelefono.Text.Length <= 0) { Verificado = false; Notificador.SetError(txbTelefono, "Este campo debe llenarse"); }
-            if (txbDireccion.Text.Length <= 0) { Verificado = false; Notificador.SetError(txbDireccion, "Este campo debe llenarse"); }
+            if (txbMunicipio.Text.Length <= 0) { Verificado = false; Notificador.SetError(txbMunicipio, "Este campo debe llenarse"); }
 
             return Verificado;
         }
+
         public EdicionEmpleados()
         {
             InitializeComponent();
+
+            //CARGANDO COMBOBOXES
+            cmbEstado.DataSource = CLS.cmbEstados.estados();
+            cmbEstado.DisplayMember = "Dmember";
+            cmbEstado.ValueMember = "Vmember";
+            cmbGenero.DataSource = CLS.cmbEstados.generos();
+            cmbGenero.DisplayMember = "Dmember";
+            cmbGenero.ValueMember = "Vmember";
+            cmbDepartamento.DataSource = CacheManager.SystemCache.Todos_departamentos();
+            cmbDepartamento.DisplayMember = "departamento";
+            cmbDepartamento.ValueMember = "iddepartamento";
+            cmbCargo.DataSource = CacheManager.SystemCache.Todos_cargos();
+            cmbCargo.DisplayMember = "cargo";
+            cmbCargo.ValueMember = "idcargo";
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

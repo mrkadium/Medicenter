@@ -11,11 +11,18 @@ namespace General.CLS
         String _IDEmpleado;
         String _Nombres;
         String _Apellidos;
+        String _Genero;
         String _FechaNacimiento;
         String _DUI;
         String _NIT;
-        String _Telefono;
+        String _IDDepartamento;
+        String _Municipio;
         String _Direccion;
+        String _IDCargo;
+        String _FechaContratacion;
+        String _FechaSalida;
+        String _Estado;
+        String[] _Contactos;
 
         public string IDEmpleado { get => _IDEmpleado; set => _IDEmpleado = value; }
         public string Nombres { get => _Nombres; set => _Nombres = value; }
@@ -23,20 +30,26 @@ namespace General.CLS
         public string FechaNacimiento { get => _FechaNacimiento; set => _FechaNacimiento = value; }
         public string DUI { get => _DUI; set => _DUI = value; }
         public string NIT { get => _NIT; set => _NIT = value; }
-        public string Telefono { get => _Telefono; set => _Telefono = value; }
         public string Direccion { get => _Direccion; set => _Direccion = value; }
+        public string Genero { get => _Genero; set => _Genero = value; }
+        public string Municipio { get => _Municipio; set => _Municipio = value; }
+        public string IDCargo { get => _IDCargo; set => _IDCargo = value; }
+        public string FechaContratacion { get => _FechaContratacion; set => _FechaContratacion = value; }
+        public string FechaSalida { get => _FechaSalida; set => _FechaSalida = value; }
+        public string Estado { get => _Estado; set => _Estado = value; }
+        public string IDDepartamento { get => _IDDepartamento; set => _IDDepartamento = value; }
+        public string[] Contactos { get => _Contactos; set => _Contactos = value; }
 
         public Boolean Guardar()
         {
             Boolean Guardado = false;
             StringBuilder Sentencia = new StringBuilder();
-            Sentencia.Append("INSERT INTO empleados(nombres, apellidos, fecha_nacimiento, dui, nit, telefono, direccion) VALUES (");
+            Sentencia.Append("INSERT INTO empleados(nombres, apellidos, fecha_nacimiento, dui, nit, direccion) VALUES (");
             Sentencia.Append("'"+ _Nombres + "',");
             Sentencia.Append("'" + _Apellidos + "',");
             Sentencia.Append("'" + _FechaNacimiento + "',");
             Sentencia.Append("'" + _DUI + "',");
             Sentencia.Append("'" + _NIT + "',");
-            Sentencia.Append("'" + _Telefono + "',");
             Sentencia.Append("'" + _Direccion + "'");
             Sentencia.Append(");");
 
@@ -69,7 +82,6 @@ namespace General.CLS
             Sentencia.Append("fecha_nacimiento = '" + _FechaNacimiento + "',");
             Sentencia.Append("dui = '" + _DUI + "',");
             Sentencia.Append("nit = '" + _NIT + "',");
-            Sentencia.Append("telefono = '" + _Telefono + "',");
             Sentencia.Append("direccion = '" + _Direccion + "'");
             Sentencia.Append(" WHERE idEmpleado = '"+ _IDEmpleado +"';");
 

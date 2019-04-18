@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblMensaje = new System.Windows.Forms.Label();
             this.btnIngresar = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txbUsuario
@@ -110,12 +111,27 @@
             this.btnIngresar.UseVisualStyleBackColor = false;
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
             // 
+            // btnCerrar
+            // 
+            this.btnCerrar.BackColor = System.Drawing.Color.Firebrick;
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.ForeColor = System.Drawing.Color.White;
+            this.btnCerrar.Location = new System.Drawing.Point(344, -2);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(41, 32);
+            this.btnCerrar.TabIndex = 5;
+            this.btnCerrar.Text = "X";
+            this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(384, 361);
+            this.ClientSize = new System.Drawing.Size(384, 352);
+            this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.lblMensaje);
             this.Controls.Add(this.label2);
@@ -123,7 +139,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txbUsuario);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Credenciales de usuario";
@@ -140,5 +156,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblMensaje;
         private System.Windows.Forms.Button btnIngresar;
+        private System.Windows.Forms.Button btnCerrar;
     }
 }

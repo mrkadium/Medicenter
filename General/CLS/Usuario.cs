@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace General.CLS
         String _IDEmpleado;
         String _IDRol;
         String _Estado;
+        String _Tipo;
 
         public string IDUsuario { get => _IDUsuario; set => _IDUsuario = value; }
         public string uUsuario { get => _Usuario; set => _Usuario = value; }
@@ -21,6 +23,7 @@ namespace General.CLS
         public string IDEmpleado { get => _IDEmpleado; set => _IDEmpleado = value; }
         public string IDRol { get => _IDRol; set => _IDRol = value; }
         public string Estado { get => _Estado; set => _Estado = value; }
+        public string Tipo { get => _Tipo; set => _Tipo = value; }
 
         public Boolean Guardar()
         {
@@ -30,7 +33,7 @@ namespace General.CLS
             Sentencia.Append("INSERT INTO usuarios(usuario, credencial, idempleado, idrol, estado) VALUES (");
             Sentencia.Append("'" + _Usuario + "',");
             Sentencia.Append("sha1('" + _Credencial + "'),");
-            Sentencia.Append("'" + _IDEmpleado + "',");
+            //Sentencia.Append("'" + _IDEmpleado + "',");
             Sentencia.Append("'" + _IDRol + "',");
             Sentencia.Append("'" + _Estado + "'");
             Sentencia.Append(");");
@@ -40,6 +43,18 @@ namespace General.CLS
             {
                 if (oOperacion.Insertar(Sentencia.ToString()) > 0)
                 {
+                    DataTable datosUsuario = CacheManager.SystemCache.getUsuario(_Usuario, _Credencial, _IDRol, _Estado);
+                    String idusuario = datosUsuario.Rows[0].Field<String>("idusuario");
+
+                    if (_Tipo.Equals("MEDICO"))
+                    {
+                        oOperacion.Insertar("INSERT INTO usuarios_medicos(idusuario, jvpm_medico) VALUES ('"+idusuario+"', '"+_IDEmpleado+"');");
+                    }
+                    else
+                    {
+                        oOperacion.Insertar("INSERT INTO usuarios_empleados(idusuario, idempleado) VALUES ('" + idusuario + "', '" + _IDEmpleado + "');");
+                    }
+
                     Guardado = true;
                 }
                 else

@@ -20,7 +20,8 @@ namespace Sistema.GUI
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            lblUsuario.Text = "Usuario: "+_SESION.oUsuario.Usuario1;
+            lblEmpleado.Text = _SESION.oUsuario.Empleado;
+            lblUsuario.Text = "[" + _SESION.oUsuario.Usuario1 + "]";
         }
 
         private void btnGestionEmpleados_Click(object sender, EventArgs e)
@@ -42,7 +43,7 @@ namespace Sistema.GUI
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            General.GUI.GestionUsuarios f = new General.GUI.GestionUsuarios();
+            General.GUI.GestionUsuariosEmpleados f = new General.GUI.GestionUsuariosEmpleados();
             f.MdiParent = this;
             f.Show();
         }
@@ -50,6 +51,33 @@ namespace Sistema.GUI
         private void Principal_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void doctoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            General.GUI.GestionMedicos f = new General.GUI.GestionMedicos();
+            f.MdiParent = this;
+            f.Show();
+        }
+
+        private void usuariosToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            General.GUI.EdicionUsuarios f = new General.GUI.EdicionUsuarios();
+            f.ShowDialog();
+        }
+
+        private void médicosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            General.GUI.GestionUsuariosMedicos f = new General.GUI.GestionUsuariosMedicos();
+            f.MdiParent = this;
+            f.Show();
+        }
+
+        private void empleadosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            General.GUI.GestionUsuariosEmpleados f = new General.GUI.GestionUsuariosEmpleados();
+            f.MdiParent = this;
+            f.Show();
         }
     }
 }

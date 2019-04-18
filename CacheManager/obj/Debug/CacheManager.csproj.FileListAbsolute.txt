@@ -22,3 +22,15 @@ C:\Users\Soldier4\Documents\VS Projects\Windows Forms\Medicenter\CacheManager\ob
 C:\Users\Soldier4\Documents\VS Projects\Windows Forms\Medicenter\CacheManager\obj\Debug\CacheManager.csproj.CopyComplete
 C:\Users\Soldier4\Documents\VS Projects\Windows Forms\Medicenter\CacheManager\obj\Debug\CacheManager.dll
 C:\Users\Soldier4\Documents\VS Projects\Windows Forms\Medicenter\CacheManager\obj\Debug\CacheManager.pdb
+C:\Users\Soldier4\Documents\repos\medicenter\CacheManager\bin\Debug\CacheManager.dll
+C:\Users\Soldier4\Documents\repos\medicenter\CacheManager\bin\Debug\CacheManager.pdb
+C:\Users\Soldier4\Documents\repos\medicenter\CacheManager\bin\Debug\DBManager.dll
+C:\Users\Soldier4\Documents\repos\medicenter\CacheManager\bin\Debug\MySql.Data.dll
+C:\Users\Soldier4\Documents\repos\medicenter\CacheManager\bin\Debug\DBManager.pdb
+C:\Users\Soldier4\Documents\repos\medicenter\CacheManager\bin\Debug\DBManager.dll.config
+C:\Users\Soldier4\Documents\repos\medicenter\CacheManager\bin\Debug\MySql.Data.xml
+C:\Users\Soldier4\Documents\repos\medicenter\CacheManager\obj\Debug\CacheManager.csprojAssemblyReference.cache
+C:\Users\Soldier4\Documents\repos\medicenter\CacheManager\obj\Debug\CacheManager.csproj.CoreCompileInputs.cache
+C:\Users\Soldier4\Documents\repos\medicenter\CacheManager\obj\Debug\CacheManager.csproj.CopyComplete
+C:\Users\Soldier4\Documents\repos\medicenter\CacheManager\obj\Debug\CacheManager.dll
+C:\Users\Soldier4\Documents\repos\medicenter\CacheManager\obj\Debug\CacheManager.pdb
