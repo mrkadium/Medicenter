@@ -73,10 +73,10 @@ namespace General.GUI
             InitializeComponent();
 
             //CARGANDO COMBOBOXES
-            cmbEstado.DataSource = CLS.cmbEstados.estados();
+            cmbEstado.DataSource = CLS.cmbEstados.Estados();
             cmbEstado.DisplayMember = "Dmember";
             cmbEstado.ValueMember = "Vmember";
-            cmbGenero.DataSource = CLS.cmbEstados.generos();
+            cmbGenero.DataSource = CLS.cmbEstados.Generos();
             cmbGenero.DisplayMember = "Dmember";
             cmbGenero.ValueMember = "Vmember";
             cmbDepartamento.DataSource = CacheManager.SystemCache.Todos_departamentos();

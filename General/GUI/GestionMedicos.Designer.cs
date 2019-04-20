@@ -46,6 +46,7 @@
             this.JVPM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha_Nacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DUI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +54,10 @@
             this.Contratacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Salida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idmedico = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Municipio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direcc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iddepartamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDatos)).BeginInit();
@@ -71,7 +76,7 @@
             this.btnSeleccionar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1281, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -82,6 +87,7 @@
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(69, 22);
             this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // sep1
             // 
@@ -95,6 +101,7 @@
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(57, 22);
             this.btnEditar.Text = "Editar";
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // sep2
             // 
@@ -108,6 +115,7 @@
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(70, 22);
             this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // txbFiltro
             // 
@@ -140,7 +148,7 @@
             this.lblRegistros});
             this.statusStrip1.Location = new System.Drawing.Point(0, 428);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1281, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -164,13 +172,18 @@
             this.JVPM,
             this.Nombres,
             this.Apellidos,
+            this.Genero,
             this.Fecha_Nacimiento,
             this.DUI,
             this.NIT,
             this.Direccion,
             this.Contratacion,
             this.Salida,
-            this.Estado});
+            this.Estado,
+            this.idmedico,
+            this.Municipio,
+            this.Direcc,
+            this.iddepartamento});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -186,7 +199,7 @@
             this.dtgvDatos.ReadOnly = true;
             this.dtgvDatos.RowHeadersVisible = false;
             this.dtgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgvDatos.Size = new System.Drawing.Size(800, 403);
+            this.dtgvDatos.Size = new System.Drawing.Size(1281, 403);
             this.dtgvDatos.TabIndex = 4;
             // 
             // JVPM
@@ -214,6 +227,14 @@
             this.Apellidos.MinimumWidth = 150;
             this.Apellidos.Name = "Apellidos";
             this.Apellidos.ReadOnly = true;
+            // 
+            // Genero
+            // 
+            this.Genero.DataPropertyName = "genero";
+            this.Genero.HeaderText = "Género";
+            this.Genero.MinimumWidth = 75;
+            this.Genero.Name = "Genero";
+            this.Genero.ReadOnly = true;
             // 
             // Fecha_Nacimiento
             // 
@@ -243,9 +264,9 @@
             // Direccion
             // 
             this.Direccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Direccion.DataPropertyName = "direccion";
+            this.Direccion.DataPropertyName = "dire";
             this.Direccion.HeaderText = "Direccion";
-            this.Direccion.MinimumWidth = 150;
+            this.Direccion.MinimumWidth = 250;
             this.Direccion.Name = "Direccion";
             this.Direccion.ReadOnly = true;
             // 
@@ -272,11 +293,45 @@
             this.Estado.Name = "Estado";
             this.Estado.ReadOnly = true;
             // 
+            // idmedico
+            // 
+            this.idmedico.DataPropertyName = "idmedico";
+            this.idmedico.HeaderText = "idmedico";
+            this.idmedico.Name = "idmedico";
+            this.idmedico.ReadOnly = true;
+            this.idmedico.Visible = false;
+            this.idmedico.Width = 30;
+            // 
+            // Municipio
+            // 
+            this.Municipio.DataPropertyName = "municipio";
+            this.Municipio.HeaderText = "Municipio";
+            this.Municipio.Name = "Municipio";
+            this.Municipio.ReadOnly = true;
+            this.Municipio.Visible = false;
+            // 
+            // Direcc
+            // 
+            this.Direcc.DataPropertyName = "direccion";
+            this.Direcc.HeaderText = "direccion";
+            this.Direcc.Name = "Direcc";
+            this.Direcc.ReadOnly = true;
+            this.Direcc.Visible = false;
+            // 
+            // iddepartamento
+            // 
+            this.iddepartamento.DataPropertyName = "iddepartamento";
+            this.iddepartamento.HeaderText = "iddepartamento";
+            this.iddepartamento.Name = "iddepartamento";
+            this.iddepartamento.ReadOnly = true;
+            this.iddepartamento.Visible = false;
+            this.iddepartamento.Width = 30;
+            // 
             // GestionMedicos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1281, 450);
             this.Controls.Add(this.dtgvDatos);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
@@ -311,6 +366,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn JVPM;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombres;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellidos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Genero;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha_Nacimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn DUI;
         private System.Windows.Forms.DataGridViewTextBoxColumn NIT;
@@ -318,5 +374,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Contratacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Salida;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idmedico;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Municipio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Direcc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iddepartamento;
     }
 }

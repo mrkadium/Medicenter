@@ -44,10 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="CLS\cmbEstados.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="CLS\cmbEstados.cs" />
     <Compile Include="CLS\Empleado.cs" />
+    <Compile Include="CLS\Medico.cs" />
     <Compile Include="CLS\Rol.cs" />
     <Compile Include="CLS\Usuario.cs" />
     <Compile Include="GUI\EdicionEmpleados.cs">
@@ -55,6 +54,12 @@
     </Compile>
     <Compile Include="GUI\EdicionEmpleados.Designer.cs">
       <DependentUpon>EdicionEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\EdicionMedico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\EdicionMedico.Designer.cs">
+      <DependentUpon>EdicionMedico.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\EdicionUsuarios.cs">
       <SubType>Form</SubType>
@@ -103,6 +108,9 @@
   <ItemGroup>
     <EmbeddedResource Include="GUI\EdicionEmpleados.resx">
       <DependentUpon>EdicionEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\EdicionMedico.resx">
+      <DependentUpon>EdicionMedico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\EdicionUsuarios.resx">
       <DependentUpon>EdicionUsuarios.cs</DependentUpon>

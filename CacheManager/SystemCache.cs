@@ -130,16 +130,21 @@ namespace CacheManager
             DBManager.CLS.DBOperacion oConsulta = new DBManager.CLS.DBOperacion();
             Sentencia.Append(
                 @"SELECT
+                    a.idmedico,
 	                a.jvpm,
                     a.nombres,
                     a.apellidos,
+                    a.genero,
                     a.fecha_nacimiento,
+                    a.municipio,
+                    a.direccion,
                     a.dui,
                     a.nit,
-                    concat(a.direccion,', ',a.municipio,', ', (SELECT departamento FROM departamentos WHERE iddepartamento = a.iddepartamento)) as direccion,
                     a.fechacontratacion,
                     a.fechasalida,
-                    a.estado
+                    a.estado,
+                    a.iddepartamento,
+                    concat(a.direccion,', ',a.municipio,', ', (SELECT departamento FROM departamentos WHERE iddepartamento = a.iddepartamento)) as dire
                 FROM medicos a;");
             try
             {
