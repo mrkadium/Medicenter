@@ -12,11 +12,17 @@ namespace General.GUI
 {
     public partial class EdicionMedico : Form
     {
+        //BindingSource _Contactos = new BindingSource();
+        private DataTable _Contactos = new DataTable();
+        List<String> prueba = new List<String>();
+
         private void Procesar()
         {
             if (Verificacion())
             {
                 CLS.Medico oMedico = new CLS.Medico();
+                CLS.Contacto oContacto = new CLS.Contacto();
+
                 oMedico.Idmedico = txbIDMedico.Text;
                 oMedico.JVPM = txbJVPM.Text;
                 oMedico.Nombres = txbNombres.Text;
@@ -30,14 +36,23 @@ namespace General.GUI
                 oMedico.FechaContratacion = FechaContratacion();
                 oMedico.FechaSalida = FechaSalida();
                 oMedico.Estado = cmbEstado.SelectedValue.ToString();
-                oMedico.IDDepartamento = cmbDepartamento.SelectedValue.ToString();
-                
+                oMedico.IDDepartamento = cmbDepartamento.SelectedValue.ToString();                              
 
                 if (txbIDMedico.Text.Length == 0)
                 {
+                    for (int f = 0; f < int.Parse(dtgvDatosContactos.Rows.Count.ToString()); f++)
+                    {
+                        oContacto.Para = "MEDICO";
+                        oContacto.IDPropietario = lblIDpropietario.Text;
+                        oContacto.Tipo = dtgvDatosContactos.Rows[f].Cells[0].Value.ToString();
+                        oContacto.NombreContacto = dtgvDatosContactos.Rows[f].Cells[1].Value.ToString();
+
+                        oContacto.Guardar();
+                    }
+
                     //INSERTANDO
                     if (oMedico.Guardar())
-                    {
+                    {                        
                         MessageBox.Show("Guardado correctamente", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Close();
                     }
@@ -89,6 +104,15 @@ namespace General.GUI
             CargarDepartamentos();
             CargarFContratacion();
             CargarFSalida();
+            CargarTiposContactos();
+            CrearColumnasContactos();
+        }
+
+        private void CrearColumnasContactos()
+        {
+            _Contactos.Columns.Add("tipo");
+            _Contactos.Columns.Add("contacto");
+            dtgvDatosContactos.DataSource = _Contactos;            
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -168,6 +192,34 @@ namespace General.GUI
             {
                 return "null";
             }
+        }
+
+        private void CargarTiposContactos()
+        {
+            cmbTipo.DataSource = CLS.cmbEstados.TipoContacto();
+            cmbTipo.DisplayMember = "Dmember";
+            cmbTipo.ValueMember = "Vmember";
+        }
+
+        private void btnAgregarContacto_Click(object sender, EventArgs e)
+        {
+            DataRow row = _Contactos.NewRow();
+            
+            row["tipo"] = cmbTipo.SelectedValue.ToString();
+            row["contacto"] = txbContacto.Text;
+            _Contactos.Rows.Add(row);            
+        }
+
+        private void btnEliminarContacto_Click(object sender, EventArgs e)
+        {
+            if (dtgvDatosContactos.CurrentRow == null)
+            {
+                return;
+            }
+            else
+            {
+                dtgvDatosContactos.Rows.Remove(dtgvDatosContactos.CurrentRow);
+            }   
         }
     }
 }

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txbIDMedico = new System.Windows.Forms.TextBox();
             this.lblJVPM = new System.Windows.Forms.Label();
             this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
@@ -60,7 +62,17 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txbJVPM = new System.Windows.Forms.TextBox();
             this.Notificador = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dtgvDatosContactos = new System.Windows.Forms.DataGridView();
+            this.btnEliminarContacto = new System.Windows.Forms.Button();
+            this.btnAgregarContacto = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txbContacto = new System.Windows.Forms.TextBox();
+            this.cmbTipo = new System.Windows.Forms.ComboBox();
+            this.lblIDpropietario = new System.Windows.Forms.Label();
+            this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contacto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Notificador)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvDatosContactos)).BeginInit();
             this.SuspendLayout();
             // 
             // txbIDMedico
@@ -247,7 +259,7 @@
             // cmbDepartamento
             // 
             this.cmbDepartamento.FormattingEnabled = true;
-            this.cmbDepartamento.Location = new System.Drawing.Point(542, 54);
+            this.cmbDepartamento.Location = new System.Drawing.Point(542, 55);
             this.cmbDepartamento.Name = "cmbDepartamento";
             this.cmbDepartamento.Size = new System.Drawing.Size(200, 21);
             this.cmbDepartamento.TabIndex = 27;
@@ -355,11 +367,120 @@
             this.Notificador.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.Notificador.ContainerControl = this;
             // 
+            // dtgvDatosContactos
+            // 
+            this.dtgvDatosContactos.AllowUserToAddRows = false;
+            this.dtgvDatosContactos.AllowUserToDeleteRows = false;
+            this.dtgvDatosContactos.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.dtgvDatosContactos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgvDatosContactos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dtgvDatosContactos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dtgvDatosContactos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvDatosContactos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tipo,
+            this.contacto});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvDatosContactos.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgvDatosContactos.Location = new System.Drawing.Point(796, 55);
+            this.dtgvDatosContactos.MultiSelect = false;
+            this.dtgvDatosContactos.Name = "dtgvDatosContactos";
+            this.dtgvDatosContactos.ReadOnly = true;
+            this.dtgvDatosContactos.RowHeadersVisible = false;
+            this.dtgvDatosContactos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvDatosContactos.Size = new System.Drawing.Size(280, 198);
+            this.dtgvDatosContactos.TabIndex = 33;
+            // 
+            // btnEliminarContacto
+            // 
+            this.btnEliminarContacto.Location = new System.Drawing.Point(976, 295);
+            this.btnEliminarContacto.Name = "btnEliminarContacto";
+            this.btnEliminarContacto.Size = new System.Drawing.Size(100, 23);
+            this.btnEliminarContacto.TabIndex = 34;
+            this.btnEliminarContacto.Text = "Eliminar contacto";
+            this.btnEliminarContacto.UseVisualStyleBackColor = true;
+            this.btnEliminarContacto.Click += new System.EventHandler(this.btnEliminarContacto_Click);
+            // 
+            // btnAgregarContacto
+            // 
+            this.btnAgregarContacto.Location = new System.Drawing.Point(870, 295);
+            this.btnAgregarContacto.Name = "btnAgregarContacto";
+            this.btnAgregarContacto.Size = new System.Drawing.Size(100, 23);
+            this.btnAgregarContacto.TabIndex = 35;
+            this.btnAgregarContacto.Text = "Agregar contacto";
+            this.btnAgregarContacto.UseVisualStyleBackColor = true;
+            this.btnAgregarContacto.Click += new System.EventHandler(this.btnAgregarContacto_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(793, 26);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(68, 16);
+            this.label13.TabIndex = 36;
+            this.label13.Text = "Contactos";
+            // 
+            // txbContacto
+            // 
+            this.txbContacto.Location = new System.Drawing.Point(976, 264);
+            this.txbContacto.Name = "txbContacto";
+            this.txbContacto.Size = new System.Drawing.Size(100, 20);
+            this.txbContacto.TabIndex = 37;
+            // 
+            // cmbTipo
+            // 
+            this.cmbTipo.FormattingEnabled = true;
+            this.cmbTipo.Location = new System.Drawing.Point(796, 264);
+            this.cmbTipo.Name = "cmbTipo";
+            this.cmbTipo.Size = new System.Drawing.Size(172, 21);
+            this.cmbTipo.TabIndex = 38;
+            // 
+            // lblIDpropietario
+            // 
+            this.lblIDpropietario.AutoSize = true;
+            this.lblIDpropietario.Location = new System.Drawing.Point(701, 28);
+            this.lblIDpropietario.Name = "lblIDpropietario";
+            this.lblIDpropietario.Size = new System.Drawing.Size(0, 13);
+            this.lblIDpropietario.TabIndex = 40;
+            this.lblIDpropietario.Visible = false;
+            // 
+            // tipo
+            // 
+            this.tipo.DataPropertyName = "tipo";
+            this.tipo.HeaderText = "Tipo";
+            this.tipo.MinimumWidth = 75;
+            this.tipo.Name = "tipo";
+            this.tipo.ReadOnly = true;
+            this.tipo.Width = 75;
+            // 
+            // contacto
+            // 
+            this.contacto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.contacto.DataPropertyName = "contacto";
+            this.contacto.HeaderText = "Contacto";
+            this.contacto.MinimumWidth = 200;
+            this.contacto.Name = "contacto";
+            this.contacto.ReadOnly = true;
+            // 
             // EdicionMedico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(772, 390);
+            this.ClientSize = new System.Drawing.Size(1109, 390);
+            this.Controls.Add(this.lblIDpropietario);
+            this.Controls.Add(this.cmbTipo);
+            this.Controls.Add(this.txbContacto);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.btnAgregarContacto);
+            this.Controls.Add(this.btnEliminarContacto);
+            this.Controls.Add(this.dtgvDatosContactos);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txbJVPM);
             this.Controls.Add(this.btnCancelar);
@@ -394,6 +515,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EdicionMedico";
             ((System.ComponentModel.ISupportInitialize)(this.Notificador)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvDatosContactos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -432,5 +554,14 @@
         public System.Windows.Forms.TextBox txbJVPM;
         private System.Windows.Forms.ErrorProvider Notificador;
         public System.Windows.Forms.DateTimePicker dtpSalida;
+        public System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button btnAgregarContacto;
+        private System.Windows.Forms.Button btnEliminarContacto;
+        public System.Windows.Forms.DataGridView dtgvDatosContactos;
+        private System.Windows.Forms.TextBox txbContacto;
+        public System.Windows.Forms.ComboBox cmbTipo;
+        public System.Windows.Forms.Label lblIDpropietario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contacto;
     }
 }

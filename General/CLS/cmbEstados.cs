@@ -34,5 +34,13 @@ namespace General.CLS
                     new cmbEstados("MASCULINO", "MASCULINO")
                 };
         }
+
+        public static cmbEstados[] TipoContacto()
+        {
+            return new cmbEstados[] {
+                    new cmbEstados("TELEFONO", "TELEFONO"),
+                    new cmbEstados("EMAIL", "EMAIL")
+                };
+        }
     }
 }

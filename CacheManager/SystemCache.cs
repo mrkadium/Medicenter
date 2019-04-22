@@ -144,7 +144,8 @@ namespace CacheManager
                     a.fechasalida,
                     a.estado,
                     a.iddepartamento,
-                    concat(a.direccion,', ',a.municipio,', ', (SELECT departamento FROM departamentos WHERE iddepartamento = a.iddepartamento)) as dire
+                    concat(a.direccion,', ',a.municipio,', ', (SELECT departamento FROM departamentos WHERE iddepartamento = a.iddepartamento)) as dire,
+                    (SELECT MAX(idmedico)+1 from medicos) as 'idpropietario'
                 FROM medicos a;");
             try
             {
@@ -280,6 +281,69 @@ namespace CacheManager
             DBManager.CLS.DBOperacion oConsulta = new DBManager.CLS.DBOperacion();
             Sentencia.Append(
                 @"SELECT * FROM contactos WHERE idpropietario = '"+pPropietario+"' AND para = '"+pPara+"';");
+            try
+            {
+                Resultado = oConsulta.EjecutarConsulta(Sentencia.ToString());
+            }
+            catch
+            {
+                Resultado = new DataTable();
+            }
+            return Resultado;
+        }
+
+        public static DataTable Todos_Contactos()
+        {
+            DataTable Resultado = new DataTable();
+            StringBuilder Sentencia = new StringBuilder();
+            DBManager.CLS.DBOperacion oConsulta = new DBManager.CLS.DBOperacion();
+            Sentencia.Append(
+                @"SELECT
+	                a.idcontacto,
+	                a.para,
+                    if(para = 'EMPLEADO', 
+                    (SELECT concat(nombres, ' ', apellidos) from empleados where idempleado = a.idpropietario), 
+                    (SELECT concat(nombres, ' ', apellidos) from medicos where idmedico = a.idpropietario)) 
+                    as 'propietario',
+	                a.tipo,
+	                a.contacto,
+                    a.idpropietario
+                FROM contactos a;");
+            try
+            {
+                Resultado = oConsulta.EjecutarConsulta(Sentencia.ToString());
+            }
+            catch
+            {
+                Resultado = new DataTable();
+            }
+            return Resultado;
+        }
+
+        public static DataTable Todos_Empleados_Contactos()
+        {
+            DataTable Resultado = new DataTable();
+            StringBuilder Sentencia = new StringBuilder();
+            DBManager.CLS.DBOperacion oConsulta = new DBManager.CLS.DBOperacion();
+            Sentencia.Append(
+                @"SELECT
+                    a.idempleado,
+                    a.nombres,
+                    a.apellidos,
+                    a.genero,
+                    a.fecha_nacimiento,                    
+                    a.dui,
+                    a.nit,
+                    a.municipio,
+                    a.direccion,
+                    a.idcargo,
+                    b.cargo,
+                    a.fechacontratacion,
+                    a.fechasalida,
+                    a.estado,
+                    a.iddepartamento,
+                    concat(a.direccion,', ',a.municipio,', ', (SELECT departamento FROM departamentos WHERE iddepartamento = a.iddepartamento)) as dire
+                FROM empleados a, cargos b where a.idcargo = b.idcargo;");
             try
             {
                 Resultado = oConsulta.EjecutarConsulta(Sentencia.ToString());

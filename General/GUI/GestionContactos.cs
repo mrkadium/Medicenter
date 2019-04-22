@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace General.GUI
 {
-    public partial class GestionMedicos : Form
+    public partial class GestionContactos : Form
     {
-        BindingSource _Medicos = new BindingSource();
+        BindingSource _Contactos = new BindingSource();
         private void CargarDatos()
         {
             try
             {
-                _Medicos.DataSource = CacheManager.SystemCache.Todos_medicos();
+                _Contactos.DataSource = CacheManager.SystemCache.Todos_Contactos();
                 FiltrarLocalmente();
             }
             catch { }
@@ -28,25 +28,26 @@ namespace General.GUI
             {
                 if (txbFiltro.TextLength > 0)
                 {
-                    _Medicos.Filter = "nombres LIKE '%" + txbFiltro.Text + "%' OR apellidos LIKE '%" + txbFiltro.Text + "%'";
+                    _Contactos.Filter = "propietario LIKE '%" + txbFiltro.Text + "%' OR para LIKE '%" + txbFiltro.Text + "%'";
                     lblRegistros.Text = dtgvDatos.Rows.Count.ToString() + " Registros encontrados";
                 }
                 else
                 {
-                    _Medicos.RemoveFilter();
+                    _Contactos.RemoveFilter();
                     dtgvDatos.AutoGenerateColumns = false;
-                    dtgvDatos.DataSource = _Medicos;
+                    dtgvDatos.DataSource = _Contactos;
                     lblRegistros.Text = dtgvDatos.Rows.Count.ToString() + " Registros encontrados";
                 }
             }
             catch { }
         }
-        public GestionMedicos()
+
+        public GestionContactos()
         {
             InitializeComponent();
         }
 
-        private void GestionMedicos_Load(object sender, EventArgs e)
+        private void GestionContactos_Load(object sender, EventArgs e)
         {
             CargarDatos();
         }
@@ -56,17 +57,9 @@ namespace General.GUI
             FiltrarLocalmente();
         }
 
-        private void btnSeleccionar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            EdicionMedico f = new EdicionMedico();
-            f.dtpContratacion.Text = null;
-            f.dtpSalida.Text = null;
-            f.lblIDpropietario.Text = dtgvDatos.Rows[0].Cells["idpropietario"].Value.ToString();
+            EdicionContactos f = new EdicionContactos();
             f.ShowDialog();
             CargarDatos();
         }
@@ -75,24 +68,23 @@ namespace General.GUI
         {
             if (MessageBox.Show("Desea editar el registro seleccionado?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                EdicionMedico f = new EdicionMedico();
+                EdicionContactos f = new EdicionContactos();
 
                 //Sincronizando interfaz gráfica con registro seleccionado
                 //(Muestra los datos del registro a editar)
-                f.txbIDMedico.Text = dtgvDatos.CurrentRow.Cells["idmedico"].Value.ToString();
-                f.txbJVPM.Text = dtgvDatos.CurrentRow.Cells["jvpm"].Value.ToString();
-                f.txbNombres.Text = dtgvDatos.CurrentRow.Cells["nombres"].Value.ToString();
-                f.txbApellidos.Text = dtgvDatos.CurrentRow.Cells["apellidos"].Value.ToString();
-                f.cmbGenero.SelectedValue = dtgvDatos.CurrentRow.Cells["genero"].Value.ToString();
-                f.dtpFechaNacimiento.Text = dtgvDatos.CurrentRow.Cells["fecha_nacimiento"].Value.ToString();
-                f.txbMunicipio.Text = dtgvDatos.CurrentRow.Cells["municipio"].Value.ToString();
-                f.txbDireccion.Text = dtgvDatos.CurrentRow.Cells["Direcc"].Value.ToString();
-                f.txbDui.Text = dtgvDatos.CurrentRow.Cells["dui"].Value.ToString();
-                f.txbNit.Text = dtgvDatos.CurrentRow.Cells["nit"].Value.ToString();
-                f.dtpContratacion.Text = dtgvDatos.CurrentRow.Cells["contratacion"].Value.ToString();
-                f.dtpSalida.Text = dtgvDatos.CurrentRow.Cells["salida"].Value.ToString();
-                f.cmbEstado.SelectedValue = dtgvDatos.CurrentRow.Cells["estado"].Value.ToString();
-                f.cmbDepartamento.SelectedValue = dtgvDatos.CurrentRow.Cells["iddepartamento"].Value.ToString();
+                if (dtgvDatos.CurrentRow.Cells["para"].Value.ToString() == "EMPLEADO")
+                {
+                    f.rdbEmpleado.Checked = true;
+                }
+                else
+                {
+                    f.rdbMedico.Checked = true;
+                }
+                f.txbIDContacto.Text = dtgvDatos.CurrentRow.Cells["idcontacto"].Value.ToString();
+                f.txbPropietario.Text = dtgvDatos.CurrentRow.Cells["propietario"].Value.ToString();
+                f.cmbTipo.Text = dtgvDatos.CurrentRow.Cells["tipo"].Value.ToString();
+                f.txbContacto.Text = dtgvDatos.CurrentRow.Cells["contacto"].Value.ToString();
+                f.lblIDPropietario.Text = dtgvDatos.CurrentRow.Cells["idpropietario"].Value.ToString();
                 f.ShowDialog();
                 CargarDatos();
             }
@@ -102,9 +94,9 @@ namespace General.GUI
         {
             if (MessageBox.Show("Desea eliminar el registro seleccionado?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                CLS.Medico oMedico = new CLS.Medico();
-                oMedico.Idmedico = dtgvDatos.CurrentRow.Cells["idmedico"].Value.ToString();
-                if (oMedico.Eliminar())
+                CLS.Contacto oContacto = new CLS.Contacto();
+                oContacto.IDContacto = dtgvDatos.CurrentRow.Cells["idcontacto"].Value.ToString();
+                if (oContacto.Eliminar())
                 {
                     MessageBox.Show("Registro eliminado exitosamente", "Confirmacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarDatos();

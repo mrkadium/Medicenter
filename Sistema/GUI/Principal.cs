@@ -79,5 +79,12 @@ namespace Sistema.GUI
             f.MdiParent = this;
             f.Show();
         }
+
+        private void contactosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            General.GUI.GestionContactos f = new General.GUI.GestionContactos();
+            f.MdiParent = this;
+            f.Show();
+        }
     }
 }

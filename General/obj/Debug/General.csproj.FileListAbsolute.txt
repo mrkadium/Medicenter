@@ -87,3 +87,7 @@ C:\Users\Javier\Documents\medicenter\General\obj\Debug\General.csproj.CopyComple
 C:\Users\Javier\Documents\medicenter\General\obj\Debug\General.dll
 C:\Users\Javier\Documents\medicenter\General\obj\Debug\General.pdb
 C:\Users\Javier\Documents\medicenter\General\obj\Debug\General.GUI.EdicionMedico.resources
+C:\Users\Javier\Documents\medicenter\General\obj\Debug\General.GUI.GestionContactos.resources
+C:\Users\Javier\Documents\medicenter\General\obj\Debug\General.GUI.EdicionContactos.resources
+C:\Users\Javier\Documents\medicenter\General\obj\Debug\General.GUI.EleccionEmpleadoParaContactos.resources
+C:\Users\Javier\Documents\medicenter\General\obj\Debug\General.GUI.EleccionMedicosParaContactos.resources

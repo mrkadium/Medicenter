@@ -1,6 +1,6 @@
 ﻿namespace General.GUI
 {
-    partial class GestionMedicos
+    partial class EleccionEmpleadoParaContactos
     {
         /// <summary>
         /// Required designer variable.
@@ -28,22 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionMedicos));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnAgregar = new System.Windows.Forms.ToolStripButton();
-            this.sep1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnEditar = new System.Windows.Forms.ToolStripButton();
-            this.sep2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnEliminar = new System.Windows.Forms.ToolStripButton();
-            this.txbFiltro = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.btnSeleccionar = new System.Windows.Forms.ToolStripButton();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.lblRegistros = new System.Windows.Forms.ToolStripStatusLabel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EleccionEmpleadoParaContactos));
             this.dtgvDatos = new System.Windows.Forms.DataGridView();
-            this.JVPM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,113 +39,27 @@
             this.DUI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Contratacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Salida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idmedico = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idcargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idempleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Municipio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Direcc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iddepartamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idpropietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStrip1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblRegistros = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.txbFiltro = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.btnAbrir = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnCancelar = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDatos)).BeginInit();
+            this.statusStrip1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnAgregar,
-            this.sep1,
-            this.btnEditar,
-            this.sep2,
-            this.btnEliminar,
-            this.txbFiltro,
-            this.toolStripLabel1,
-            this.btnSeleccionar});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1281, 25);
-            this.toolStrip1.TabIndex = 2;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
-            this.btnAgregar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(69, 22);
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // sep1
-            // 
-            this.sep1.Name = "sep1";
-            this.sep1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
-            this.btnEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(57, 22);
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // sep2
-            // 
-            this.sep2.Name = "sep2";
-            this.sep2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
-            this.btnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(70, 22);
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // txbFiltro
-            // 
-            this.txbFiltro.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.txbFiltro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txbFiltro.Name = "txbFiltro";
-            this.txbFiltro.Size = new System.Drawing.Size(200, 25);
-            this.txbFiltro.TextChanged += new System.EventHandler(this.txbFiltro_TextChanged);
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(37, 22);
-            this.toolStripLabel1.Text = "Filtrar";
-            // 
-            // btnSeleccionar
-            // 
-            this.btnSeleccionar.Image = ((System.Drawing.Image)(resources.GetObject("btnSeleccionar.Image")));
-            this.btnSeleccionar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(87, 22);
-            this.btnSeleccionar.Text = "Seleccionar";
-            this.btnSeleccionar.Visible = false;
-            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblRegistros});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1281, 22);
-            this.statusStrip1.TabIndex = 3;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // lblRegistros
-            // 
-            this.lblRegistros.Name = "lblRegistros";
-            this.lblRegistros.Size = new System.Drawing.Size(133, 17);
-            this.lblRegistros.Text = "0 Registros encontrados";
             // 
             // dtgvDatos
             // 
@@ -170,7 +72,6 @@
             this.dtgvDatos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dtgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.JVPM,
             this.Nombres,
             this.Apellidos,
             this.Genero,
@@ -178,14 +79,15 @@
             this.DUI,
             this.NIT,
             this.Direccion,
+            this.cargo,
             this.Contratacion,
             this.Salida,
             this.Estado,
-            this.idmedico,
+            this.idcargo,
+            this.idempleado,
             this.Municipio,
             this.Direcc,
-            this.iddepartamento,
-            this.idpropietario});
+            this.iddepartamento});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -201,16 +103,9 @@
             this.dtgvDatos.ReadOnly = true;
             this.dtgvDatos.RowHeadersVisible = false;
             this.dtgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgvDatos.Size = new System.Drawing.Size(1281, 403);
-            this.dtgvDatos.TabIndex = 4;
-            // 
-            // JVPM
-            // 
-            this.JVPM.DataPropertyName = "jvpm";
-            this.JVPM.HeaderText = "JVPM";
-            this.JVPM.Name = "JVPM";
-            this.JVPM.ReadOnly = true;
-            this.JVPM.Width = 60;
+            this.dtgvDatos.Size = new System.Drawing.Size(1347, 403);
+            this.dtgvDatos.TabIndex = 7;
+            this.dtgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvDatos_CellDoubleClick);
             // 
             // Nombres
             // 
@@ -272,6 +167,15 @@
             this.Direccion.Name = "Direccion";
             this.Direccion.ReadOnly = true;
             // 
+            // cargo
+            // 
+            this.cargo.DataPropertyName = "cargo";
+            this.cargo.HeaderText = "Cargo";
+            this.cargo.MinimumWidth = 125;
+            this.cargo.Name = "cargo";
+            this.cargo.ReadOnly = true;
+            this.cargo.Width = 125;
+            // 
             // Contratacion
             // 
             this.Contratacion.DataPropertyName = "fechacontratacion";
@@ -295,14 +199,23 @@
             this.Estado.Name = "Estado";
             this.Estado.ReadOnly = true;
             // 
-            // idmedico
+            // idcargo
             // 
-            this.idmedico.DataPropertyName = "idmedico";
-            this.idmedico.HeaderText = "idmedico";
-            this.idmedico.Name = "idmedico";
-            this.idmedico.ReadOnly = true;
-            this.idmedico.Visible = false;
-            this.idmedico.Width = 30;
+            this.idcargo.DataPropertyName = "idcargo";
+            this.idcargo.HeaderText = "idcargo";
+            this.idcargo.Name = "idcargo";
+            this.idcargo.ReadOnly = true;
+            this.idcargo.Visible = false;
+            this.idcargo.Width = 60;
+            // 
+            // idempleado
+            // 
+            this.idempleado.DataPropertyName = "idempleado";
+            this.idempleado.HeaderText = "idempleado";
+            this.idempleado.Name = "idempleado";
+            this.idempleado.ReadOnly = true;
+            this.idempleado.Visible = false;
+            this.idempleado.Width = 30;
             // 
             // Municipio
             // 
@@ -329,31 +242,91 @@
             this.iddepartamento.Visible = false;
             this.iddepartamento.Width = 30;
             // 
-            // idpropietario
+            // statusStrip1
             // 
-            this.idpropietario.DataPropertyName = "idpropietario";
-            this.idpropietario.HeaderText = "idpropietario";
-            this.idpropietario.Name = "idpropietario";
-            this.idpropietario.ReadOnly = true;
-            this.idpropietario.Visible = false;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblRegistros});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1347, 22);
+            this.statusStrip1.TabIndex = 6;
+            this.statusStrip1.Text = "statusStrip1";
             // 
-            // GestionMedicos
+            // lblRegistros
+            // 
+            this.lblRegistros.Name = "lblRegistros";
+            this.lblRegistros.Size = new System.Drawing.Size(133, 17);
+            this.lblRegistros.Text = "0 Registros encontrados";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.txbFiltro,
+            this.toolStripLabel1,
+            this.btnAbrir,
+            this.toolStripSeparator1,
+            this.btnCancelar});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1347, 25);
+            this.toolStrip1.TabIndex = 5;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // txbFiltro
+            // 
+            this.txbFiltro.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.txbFiltro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txbFiltro.Name = "txbFiltro";
+            this.txbFiltro.Size = new System.Drawing.Size(200, 25);
+            this.txbFiltro.TextChanged += new System.EventHandler(this.txbFiltro_TextChanged);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(37, 22);
+            this.toolStripLabel1.Text = "Filtrar";
+            // 
+            // btnAbrir
+            // 
+            this.btnAbrir.Image = ((System.Drawing.Image)(resources.GetObject("btnAbrir.Image")));
+            this.btnAbrir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAbrir.Name = "btnAbrir";
+            this.btnAbrir.Size = new System.Drawing.Size(53, 22);
+            this.btnAbrir.Text = "Abrir";
+            this.btnAbrir.Click += new System.EventHandler(this.btnAbrir_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
+            this.btnCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(73, 22);
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // EleccionEmpleadoParaContactos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1281, 450);
+            this.ClientSize = new System.Drawing.Size(1347, 450);
             this.Controls.Add(this.dtgvDatos);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
-            this.Name = "GestionMedicos";
+            this.Name = "EleccionEmpleadoParaContactos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GestionMedicos";
-            this.Load += new System.EventHandler(this.GestionMedicos_Load);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.Text = "Detalles de empleados";
+            this.Load += new System.EventHandler(this.EleccionEmpleadoParaContactos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvDatos)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvDatos)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -361,19 +334,14 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        public System.Windows.Forms.ToolStripButton btnAgregar;
-        public System.Windows.Forms.ToolStripSeparator sep1;
-        public System.Windows.Forms.ToolStripButton btnEditar;
-        public System.Windows.Forms.ToolStripSeparator sep2;
-        public System.Windows.Forms.ToolStripButton btnEliminar;
-        private System.Windows.Forms.ToolStripTextBox txbFiltro;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        public System.Windows.Forms.ToolStripButton btnSeleccionar;
+        public System.Windows.Forms.DataGridView dtgvDatos;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblRegistros;
-        public System.Windows.Forms.DataGridView dtgvDatos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn JVPM;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripButton btnAbrir;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton btnCancelar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombres;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellidos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Genero;
@@ -381,13 +349,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DUI;
         private System.Windows.Forms.DataGridViewTextBoxColumn NIT;
         private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cargo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Contratacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Salida;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idmedico;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idcargo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idempleado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Municipio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Direcc;
         private System.Windows.Forms.DataGridViewTextBoxColumn iddepartamento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idpropietario;
+        public System.Windows.Forms.ToolStripTextBox txbFiltro;
     }
 }

@@ -45,10 +45,17 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="CLS\cmbEstados.cs" />
+    <Compile Include="CLS\Contacto.cs" />
     <Compile Include="CLS\Empleado.cs" />
     <Compile Include="CLS\Medico.cs" />
     <Compile Include="CLS\Rol.cs" />
     <Compile Include="CLS\Usuario.cs" />
+    <Compile Include="GUI\EdicionContactos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\EdicionContactos.Designer.cs">
+      <DependentUpon>EdicionContactos.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\EdicionEmpleados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +73,24 @@
     </Compile>
     <Compile Include="GUI\EdicionUsuarios.Designer.cs">
       <DependentUpon>EdicionUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\EleccionEmpleadoParaContactos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\EleccionEmpleadoParaContactos.Designer.cs">
+      <DependentUpon>EleccionEmpleadoParaContactos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\EleccionMedicosParaContactos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\EleccionMedicosParaContactos.Designer.cs">
+      <DependentUpon>EleccionMedicosParaContactos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\GestionContactos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\GestionContactos.Designer.cs">
+      <DependentUpon>GestionContactos.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\GestionEmpleados.cs">
       <SubType>Form</SubType>
@@ -106,6 +131,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <EmbeddedResource Include="GUI\EdicionContactos.resx">
+      <DependentUpon>EdicionContactos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\EdicionEmpleados.resx">
       <DependentUpon>EdicionEmpleados.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +142,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\EdicionUsuarios.resx">
       <DependentUpon>EdicionUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\EleccionEmpleadoParaContactos.resx">
+      <DependentUpon>EleccionEmpleadoParaContactos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\EleccionMedicosParaContactos.resx">
+      <DependentUpon>EleccionMedicosParaContactos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\GestionContactos.resx">
+      <DependentUpon>GestionContactos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\GestionEmpleados.resx">
       <DependentUpon>GestionEmpleados.cs</DependentUpon>
