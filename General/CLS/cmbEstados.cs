@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace General.CLS
 {
-    public class cmbEstados
+    public class cmbEstados : Form
     {
         public String Dmember { get; set; }
         public String Vmember { get; set; }
@@ -19,27 +19,19 @@ namespace General.CLS
         }
 
 
-        public static cmbEstados[] Estados()
+        public static cmbEstados[] estados()
         {
             return new cmbEstados[] {
-                    new cmbEstados("ACTIVO", "ACTIVO"),
+                    new cmbEstados("ACTIVO", "INACTIVO"),
                     new cmbEstados("INACTIVO", "INACTIVO")
                 };
         }
 
-        public static cmbEstados[] Generos()
+        public static cmbEstados[] generos()
         {
             return new cmbEstados[] {
                     new cmbEstados("FEMENINO", "FEMENINO"),
                     new cmbEstados("MASCULINO", "MASCULINO")
-                };
-        }
-
-        public static cmbEstados[] TipoContacto()
-        {
-            return new cmbEstados[] {
-                    new cmbEstados("TELEFONO", "TELEFONO"),
-                    new cmbEstados("EMAIL", "EMAIL")
                 };
         }
     }

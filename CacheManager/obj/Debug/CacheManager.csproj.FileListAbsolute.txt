@@ -34,15 +34,3 @@ C:\Users\Soldier4\Documents\repos\medicenter\CacheManager\obj\Debug\CacheManager
 C:\Users\Soldier4\Documents\repos\medicenter\CacheManager\obj\Debug\CacheManager.csproj.CopyComplete
 C:\Users\Soldier4\Documents\repos\medicenter\CacheManager\obj\Debug\CacheManager.dll
 C:\Users\Soldier4\Documents\repos\medicenter\CacheManager\obj\Debug\CacheManager.pdb
-C:\Users\Javier\Documents\medicenter\CacheManager\bin\Debug\CacheManager.dll
-C:\Users\Javier\Documents\medicenter\CacheManager\bin\Debug\CacheManager.pdb
-C:\Users\Javier\Documents\medicenter\CacheManager\bin\Debug\DBManager.dll
-C:\Users\Javier\Documents\medicenter\CacheManager\bin\Debug\MySql.Data.dll
-C:\Users\Javier\Documents\medicenter\CacheManager\bin\Debug\DBManager.pdb
-C:\Users\Javier\Documents\medicenter\CacheManager\bin\Debug\DBManager.dll.config
-C:\Users\Javier\Documents\medicenter\CacheManager\bin\Debug\MySql.Data.xml
-C:\Users\Javier\Documents\medicenter\CacheManager\obj\Debug\CacheManager.csprojAssemblyReference.cache
-C:\Users\Javier\Documents\medicenter\CacheManager\obj\Debug\CacheManager.csproj.CoreCompileInputs.cache
-C:\Users\Javier\Documents\medicenter\CacheManager\obj\Debug\CacheManager.csproj.CopyComplete
-C:\Users\Javier\Documents\medicenter\CacheManager\obj\Debug\CacheManager.dll
-C:\Users\Javier\Documents\medicenter\CacheManager\obj\Debug\CacheManager.pdb

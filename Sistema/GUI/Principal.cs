@@ -22,6 +22,11 @@ namespace Sistema.GUI
         {
             lblEmpleado.Text = _SESION.oUsuario.Empleado;
             lblUsuario.Text = "[" + _SESION.oUsuario.Usuario1 + "]";
+
+            Menu f = new Menu();
+            f.WindowState = FormWindowState.Maximized;
+            f.MdiParent = this;
+            f.Show();
         }
 
         private void btnGestionEmpleados_Click(object sender, EventArgs e)
@@ -80,9 +85,26 @@ namespace Sistema.GUI
             f.Show();
         }
 
-        private void contactosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            General.GUI.GestionContactos f = new General.GUI.GestionContactos();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            foreach (Form frm in this.MdiChildren)
+            {
+                if (frm.GetType() == this.GetType() && frm != this)
+                {
+                    frm.Dispose();
+                    frm.Close();
+                }
+            }
+        }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            Menu f = new Menu();
+            f.WindowState = FormWindowState.Maximized;
             f.MdiParent = this;
             f.Show();
         }

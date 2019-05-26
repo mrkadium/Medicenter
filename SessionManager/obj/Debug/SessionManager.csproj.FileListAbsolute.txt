@@ -10,9 +10,3 @@ C:\Users\Soldier4\Documents\repos\medicenter\SessionManager\obj\Debug\SessionMan
 C:\Users\Soldier4\Documents\repos\medicenter\SessionManager\obj\Debug\SessionManager.csproj.CoreCompileInputs.cache
 C:\Users\Soldier4\Documents\repos\medicenter\SessionManager\obj\Debug\SessionManager.dll
 C:\Users\Soldier4\Documents\repos\medicenter\SessionManager\obj\Debug\SessionManager.pdb
-C:\Users\Javier\Documents\medicenter\SessionManager\bin\Debug\SessionManager.dll
-C:\Users\Javier\Documents\medicenter\SessionManager\bin\Debug\SessionManager.pdb
-C:\Users\Javier\Documents\medicenter\SessionManager\obj\Debug\SessionManager.csprojAssemblyReference.cache
-C:\Users\Javier\Documents\medicenter\SessionManager\obj\Debug\SessionManager.csproj.CoreCompileInputs.cache
-C:\Users\Javier\Documents\medicenter\SessionManager\obj\Debug\SessionManager.dll
-C:\Users\Javier\Documents\medicenter\SessionManager\obj\Debug\SessionManager.pdb

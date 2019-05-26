@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Sistema.GUI
 {
-    public partial class Login : Form
+    public partial class Login : MetroFramework.Forms.MetroForm
     {
         SessionManager.Session _SESION = SessionManager.Session.Instancia;
         //Atributo
@@ -61,6 +62,7 @@ namespace Sistema.GUI
                 {
                     _Autorizado = false;
                     lblMensaje.Text = "SU USUARIO Y/O SU CONTRASEÑA SON ERRÓNEOS";
+                    SystemSounds.Asterisk.Play();
                 }
                 //Desing Patterns, Elements - GoF
             }
@@ -70,30 +72,48 @@ namespace Sistema.GUI
             }
         }
 
-        private void btnIngresar_Click(object sender, EventArgs e)
-        {
-            Validar(txbUsuario.Text, txbCredencial.Text);
-        }
-
-        private void txbUsuario_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if((int)e.KeyChar == (int)Keys.Enter)
-            {
-                Validar(txbUsuario.Text, txbCredencial.Text);
-            }
-        }
-
-        private void txbCredencial_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((int)e.KeyChar == (int)Keys.Enter)
-            {
-                Validar(txbUsuario.Text, txbCredencial.Text);
-            }
-        }
-
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            this.Select();
+        }
+
+        private void metroTextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter || (int)e.KeyChar == ((int)Keys.Alt | (int)Keys.F4))
+            {
+                Validar(metroTextBox1.Text, metroTextBox2.Text);
+            }
+        }
+
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keydata)
+        {
+            if (keydata == (Keys.Alt | Keys.F4))
+            {
+                Application.Exit();
+                return true;
+            }
+            else
+            {
+                return base.ProcessCmdKey(ref msg, keydata);
+            }
+        }
+
+        private void metroTextBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                Validar(metroTextBox1.Text, metroTextBox2.Text);
+            }
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            Validar(metroTextBox1.Text, metroTextBox2.Text);
         }
     }
 }
