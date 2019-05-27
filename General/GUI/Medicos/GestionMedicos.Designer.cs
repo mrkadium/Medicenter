@@ -1,6 +1,6 @@
-﻿namespace General.GUI
+﻿namespace General.GUI.Medicos
 {
-    partial class GestionEmpleados
+    partial class GestionMedicos
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionEmpleados));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionMedicos));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -43,20 +43,23 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.btnSeleccionar = new System.Windows.Forms.ToolStripButton();
             this.dtgvDatos = new System.Windows.Forms.DataGridView();
-            this.IDEmpleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JVPM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha_Nacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha_Nacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DUI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Departamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Municipio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Contratacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Salida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idmedico = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Municipio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direcc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iddepartamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idpropietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idcontacto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDatos)).BeginInit();
@@ -69,7 +72,7 @@
             this.statusStrip1.Location = new System.Drawing.Point(0, 428);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(800, 22);
-            this.statusStrip1.TabIndex = 0;
+            this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // lblRegistros
@@ -80,6 +83,7 @@
             // 
             // toolStrip1
             // 
+            this.toolStrip1.BackColor = System.Drawing.Color.White;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAgregar,
             this.sep1,
@@ -91,8 +95,9 @@
             this.btnSeleccionar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
-            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(5);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 33);
+            this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // btnAgregar
@@ -100,35 +105,35 @@
             this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
             this.btnAgregar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(69, 22);
+            this.btnAgregar.Size = new System.Drawing.Size(69, 20);
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // sep1
             // 
             this.sep1.Name = "sep1";
-            this.sep1.Size = new System.Drawing.Size(6, 25);
+            this.sep1.Size = new System.Drawing.Size(6, 23);
             // 
             // btnEditar
             // 
             this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
             this.btnEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(57, 22);
+            this.btnEditar.Size = new System.Drawing.Size(57, 20);
             this.btnEditar.Text = "Editar";
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // sep2
             // 
             this.sep2.Name = "sep2";
-            this.sep2.Size = new System.Drawing.Size(6, 25);
+            this.sep2.Size = new System.Drawing.Size(6, 23);
             // 
             // btnEliminar
             // 
             this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
             this.btnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(70, 22);
+            this.btnEliminar.Size = new System.Drawing.Size(70, 20);
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
@@ -137,14 +142,14 @@
             this.txbFiltro.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.txbFiltro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txbFiltro.Name = "txbFiltro";
-            this.txbFiltro.Size = new System.Drawing.Size(200, 25);
+            this.txbFiltro.Size = new System.Drawing.Size(200, 23);
             this.txbFiltro.TextChanged += new System.EventHandler(this.txbFiltro_TextChanged);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(37, 22);
+            this.toolStripLabel1.Size = new System.Drawing.Size(37, 20);
             this.toolStripLabel1.Text = "Filtrar";
             // 
             // btnSeleccionar
@@ -152,7 +157,7 @@
             this.btnSeleccionar.Image = ((System.Drawing.Image)(resources.GetObject("btnSeleccionar.Image")));
             this.btnSeleccionar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(87, 22);
+            this.btnSeleccionar.Size = new System.Drawing.Size(87, 20);
             this.btnSeleccionar.Text = "Seleccionar";
             this.btnSeleccionar.Visible = false;
             this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
@@ -168,20 +173,23 @@
             this.dtgvDatos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dtgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDEmpleado,
-            this.Cargo,
+            this.JVPM,
             this.Nombres,
             this.Apellidos,
-            this.Fecha_Nacimiento,
             this.Genero,
+            this.Fecha_Nacimiento,
             this.DUI,
             this.NIT,
-            this.Departamento,
-            this.Municipio,
             this.Direccion,
             this.Contratacion,
             this.Salida,
-            this.Estado});
+            this.Estado,
+            this.idmedico,
+            this.Municipio,
+            this.Direcc,
+            this.iddepartamento,
+            this.idpropietario,
+            this.idcontacto});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -191,29 +199,22 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtgvDatos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtgvDatos.Location = new System.Drawing.Point(0, 25);
+            this.dtgvDatos.Location = new System.Drawing.Point(0, 33);
             this.dtgvDatos.MultiSelect = false;
             this.dtgvDatos.Name = "dtgvDatos";
             this.dtgvDatos.ReadOnly = true;
             this.dtgvDatos.RowHeadersVisible = false;
             this.dtgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgvDatos.Size = new System.Drawing.Size(800, 403);
-            this.dtgvDatos.TabIndex = 2;
+            this.dtgvDatos.Size = new System.Drawing.Size(800, 395);
+            this.dtgvDatos.TabIndex = 7;
             // 
-            // IDEmpleado
+            // JVPM
             // 
-            this.IDEmpleado.DataPropertyName = "idEmpleado";
-            this.IDEmpleado.HeaderText = "ID";
-            this.IDEmpleado.Name = "IDEmpleado";
-            this.IDEmpleado.ReadOnly = true;
-            this.IDEmpleado.Width = 60;
-            // 
-            // Cargo
-            // 
-            this.Cargo.DataPropertyName = "cargo";
-            this.Cargo.HeaderText = "Cargo";
-            this.Cargo.Name = "Cargo";
-            this.Cargo.ReadOnly = true;
+            this.JVPM.DataPropertyName = "jvpm";
+            this.JVPM.HeaderText = "JVPM";
+            this.JVPM.Name = "JVPM";
+            this.JVPM.ReadOnly = true;
+            this.JVPM.Width = 60;
             // 
             // Nombres
             // 
@@ -233,6 +234,14 @@
             this.Apellidos.Name = "Apellidos";
             this.Apellidos.ReadOnly = true;
             // 
+            // Genero
+            // 
+            this.Genero.DataPropertyName = "genero";
+            this.Genero.HeaderText = "Género";
+            this.Genero.MinimumWidth = 75;
+            this.Genero.Name = "Genero";
+            this.Genero.ReadOnly = true;
+            // 
             // Fecha_Nacimiento
             // 
             this.Fecha_Nacimiento.DataPropertyName = "fecha_nacimiento";
@@ -240,13 +249,6 @@
             this.Fecha_Nacimiento.MinimumWidth = 75;
             this.Fecha_Nacimiento.Name = "Fecha_Nacimiento";
             this.Fecha_Nacimiento.ReadOnly = true;
-            // 
-            // Genero
-            // 
-            this.Genero.DataPropertyName = "genero";
-            this.Genero.HeaderText = "Género";
-            this.Genero.Name = "Genero";
-            this.Genero.ReadOnly = true;
             // 
             // DUI
             // 
@@ -261,31 +263,16 @@
             // 
             this.NIT.DataPropertyName = "nit";
             this.NIT.HeaderText = "NIT";
-            this.NIT.MinimumWidth = 90;
+            this.NIT.MinimumWidth = 100;
             this.NIT.Name = "NIT";
             this.NIT.ReadOnly = true;
-            this.NIT.Width = 90;
-            // 
-            // Departamento
-            // 
-            this.Departamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Departamento.DataPropertyName = "departamento";
-            this.Departamento.HeaderText = "Departamento";
-            this.Departamento.MinimumWidth = 150;
-            this.Departamento.Name = "Departamento";
-            this.Departamento.ReadOnly = true;
-            // 
-            // Municipio
-            // 
-            this.Municipio.DataPropertyName = "municipio";
-            this.Municipio.HeaderText = "Municipio";
-            this.Municipio.Name = "Municipio";
-            this.Municipio.ReadOnly = true;
             // 
             // Direccion
             // 
-            this.Direccion.DataPropertyName = "direccion";
-            this.Direccion.HeaderText = "Dirección";
+            this.Direccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Direccion.DataPropertyName = "dire";
+            this.Direccion.HeaderText = "Direccion";
+            this.Direccion.MinimumWidth = 250;
             this.Direccion.Name = "Direccion";
             this.Direccion.ReadOnly = true;
             // 
@@ -312,18 +299,69 @@
             this.Estado.Name = "Estado";
             this.Estado.ReadOnly = true;
             // 
-            // GestionEmpleados
+            // idmedico
+            // 
+            this.idmedico.DataPropertyName = "idmedico";
+            this.idmedico.HeaderText = "idmedico";
+            this.idmedico.Name = "idmedico";
+            this.idmedico.ReadOnly = true;
+            this.idmedico.Visible = false;
+            this.idmedico.Width = 30;
+            // 
+            // Municipio
+            // 
+            this.Municipio.DataPropertyName = "municipio";
+            this.Municipio.HeaderText = "Municipio";
+            this.Municipio.Name = "Municipio";
+            this.Municipio.ReadOnly = true;
+            this.Municipio.Visible = false;
+            // 
+            // Direcc
+            // 
+            this.Direcc.DataPropertyName = "direccion";
+            this.Direcc.HeaderText = "direccion";
+            this.Direcc.Name = "Direcc";
+            this.Direcc.ReadOnly = true;
+            this.Direcc.Visible = false;
+            // 
+            // iddepartamento
+            // 
+            this.iddepartamento.DataPropertyName = "iddepartamento";
+            this.iddepartamento.HeaderText = "iddepartamento";
+            this.iddepartamento.Name = "iddepartamento";
+            this.iddepartamento.ReadOnly = true;
+            this.iddepartamento.Visible = false;
+            this.iddepartamento.Width = 30;
+            // 
+            // idpropietario
+            // 
+            this.idpropietario.DataPropertyName = "idpropietario";
+            this.idpropietario.HeaderText = "idpropietario";
+            this.idpropietario.Name = "idpropietario";
+            this.idpropietario.ReadOnly = true;
+            this.idpropietario.Visible = false;
+            // 
+            // idcontacto
+            // 
+            this.idcontacto.DataPropertyName = "idcontacto";
+            this.idcontacto.HeaderText = "idcontacto";
+            this.idcontacto.Name = "idcontacto";
+            this.idcontacto.ReadOnly = true;
+            this.idcontacto.Visible = false;
+            // 
+            // GestionMedicos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dtgvDatos);
-            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
-            this.Name = "GestionEmpleados";
+            this.Controls.Add(this.toolStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "GestionMedicos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GestionEmpleados";
-            this.Load += new System.EventHandler(this.GestionEmpleados_Load);
+            this.Text = "Gestion de médicos";
+            this.Load += new System.EventHandler(this.GestionMedicos_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -335,32 +373,34 @@
         }
 
         #endregion
-
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripTextBox txbFiltro;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripStatusLabel lblRegistros;
-        public System.Windows.Forms.DataGridView dtgvDatos;
-        public System.Windows.Forms.ToolStripButton btnSeleccionar;
+        private System.Windows.Forms.ToolStrip toolStrip1;
         public System.Windows.Forms.ToolStripButton btnAgregar;
         public System.Windows.Forms.ToolStripSeparator sep1;
         public System.Windows.Forms.ToolStripButton btnEditar;
         public System.Windows.Forms.ToolStripSeparator sep2;
         public System.Windows.Forms.ToolStripButton btnEliminar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDEmpleado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cargo;
+        private System.Windows.Forms.ToolStripTextBox txbFiltro;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        public System.Windows.Forms.ToolStripButton btnSeleccionar;
+        public System.Windows.Forms.DataGridView dtgvDatos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JVPM;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombres;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellidos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha_Nacimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Genero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha_Nacimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn DUI;
         private System.Windows.Forms.DataGridViewTextBoxColumn NIT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Departamento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Municipio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Contratacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Salida;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idmedico;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Municipio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Direcc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iddepartamento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idpropietario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idcontacto;
     }
 }

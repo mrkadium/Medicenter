@@ -44,59 +44,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="CLS\cmbEstados.cs">
+    <Compile Include="CLS\cmbEstados.cs" />
+    <Compile Include="CLS\Contactos.cs" />
+    <Compile Include="CLS\ContactosMedicos.cs" />
+    <Compile Include="CLS\Especialidades.cs" />
+    <Compile Include="CLS\EspecialidadesMedicos.cs" />
+    <Compile Include="CLS\Medicos.cs" />
+    <Compile Include="GUI\Especialidades\EdicionEspecialidades.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CLS\Empleado.cs" />
-    <Compile Include="CLS\Rol.cs" />
-    <Compile Include="CLS\Usuario.cs" />
-    <Compile Include="GUI\EdicionEmpleados.cs">
+    <Compile Include="GUI\Especialidades\EdicionEspecialidades.Designer.cs">
+      <DependentUpon>EdicionEspecialidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Especialidades\GestionEspecialidades.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\EdicionEmpleados.Designer.cs">
-      <DependentUpon>EdicionEmpleados.cs</DependentUpon>
+    <Compile Include="GUI\Especialidades\GestionEspecialidades.Designer.cs">
+      <DependentUpon>GestionEspecialidades.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\EdicionMedico.cs">
+    <Compile Include="GUI\Medicos\EdicionMedicos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\EdicionMedico.Designer.cs">
-      <DependentUpon>EdicionMedico.cs</DependentUpon>
+    <Compile Include="GUI\Medicos\EdicionMedicos.Designer.cs">
+      <DependentUpon>EdicionMedicos.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\EdicionUsuarios.cs">
+    <Compile Include="GUI\Medicos\GestionMedicos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\EdicionUsuarios.Designer.cs">
-      <DependentUpon>EdicionUsuarios.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\GestionEmpleados.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\GestionEmpleados.Designer.cs">
-      <DependentUpon>GestionEmpleados.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\GestionMedicos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\GestionMedicos.Designer.cs">
+    <Compile Include="GUI\Medicos\GestionMedicos.Designer.cs">
       <DependentUpon>GestionMedicos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\GestionRoles.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\GestionRoles.Designer.cs">
-      <DependentUpon>GestionRoles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\GestionUsuariosEmpleados.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\GestionUsuariosEmpleados.Designer.cs">
-      <DependentUpon>GestionUsuariosEmpleados.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\GestionUsuariosMedicos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\GestionUsuariosMedicos.Designer.cs">
-      <DependentUpon>GestionUsuariosMedicos.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -106,29 +82,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="GUI\EdicionEmpleados.resx">
-      <DependentUpon>EdicionEmpleados.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Especialidades\EdicionEspecialidades.resx">
+      <DependentUpon>EdicionEspecialidades.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\EdicionMedico.resx">
-      <DependentUpon>EdicionMedico.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Especialidades\GestionEspecialidades.resx">
+      <DependentUpon>GestionEspecialidades.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\EdicionUsuarios.resx">
-      <DependentUpon>EdicionUsuarios.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Medicos\EdicionMedicos.resx">
+      <DependentUpon>EdicionMedicos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\GestionEmpleados.resx">
-      <DependentUpon>GestionEmpleados.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\GestionMedicos.resx">
+    <EmbeddedResource Include="GUI\Medicos\GestionMedicos.resx">
       <DependentUpon>GestionMedicos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\GestionRoles.resx">
-      <DependentUpon>GestionRoles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\GestionUsuariosEmpleados.resx">
-      <DependentUpon>GestionUsuariosEmpleados.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\GestionUsuariosMedicos.resx">
-      <DependentUpon>GestionUsuariosMedicos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -145,5 +109,6 @@
       <Name>DBManager</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

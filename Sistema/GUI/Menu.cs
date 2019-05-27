@@ -19,7 +19,21 @@ namespace Sistema.GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            General.GUI.GestionMedicos f = new General.GUI.GestionMedicos();
+            General.GUI.Medicos.GestionMedicos f = new General.GUI.Medicos.GestionMedicos();
+            f.MdiParent = this.MdiParent;
+            f.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            General.GUI.Especialidades.GestionEspecialidades f = new General.GUI.Especialidades.GestionEspecialidades();
+            f.MdiParent = this.MdiParent;
+            f.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            General.GUI.Contactos.GestionContactos f = new General.GUI.Contactos.GestionContactos();
             f.MdiParent = this.MdiParent;
             f.Show();
         }
