@@ -43,12 +43,13 @@
             // 
             // btnCerrar
             // 
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCerrar.AutoEllipsis = true;
             this.btnCerrar.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.ForeColor = System.Drawing.Color.White;
-            this.btnCerrar.Location = new System.Drawing.Point(694, 0);
+            this.btnCerrar.Location = new System.Drawing.Point(695, -1);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(41, 32);
             this.btnCerrar.TabIndex = 5;
@@ -91,6 +92,7 @@
             this.metroTextBox1.WaterMark = "USUARIO";
             this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.metroTextBox1.Click += new System.EventHandler(this.metroTextBox1_Click);
             this.metroTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.metroTextBox1_KeyPress);
             // 
             // metroTextBox2
@@ -200,6 +202,7 @@
             this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.White;
             this.Text = "Medicenter";
+            this.TransparencyKey = System.Drawing.Color.LemonChiffon;
             this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

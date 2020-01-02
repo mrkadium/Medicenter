@@ -13,6 +13,7 @@ namespace Sistema.GUI
 {
     public partial class Login : MetroFramework.Forms.MetroForm
     {
+
         SessionManager.Session _SESION = SessionManager.Session.Instancia;
         //Atributo
         Boolean _Autorizado = false;
@@ -22,6 +23,8 @@ namespace Sistema.GUI
             get { return _Autorizado; }
             //set { _Autorizado = value; }
         }
+        
+
         public Login()
         {
             InitializeComponent();
@@ -30,6 +33,7 @@ namespace Sistema.GUI
         {
             DataTable DatosUsuario = new DataTable();
             DataTable DatosUsuarioMedico = new DataTable();
+            DataTable Permisos = new DataTable();
             try
             {
                 //PARA EMPLEADOS
@@ -45,6 +49,15 @@ namespace Sistema.GUI
                     _SESION.oUsuario.IDRol = DatosUsuario.Rows[0]["rol"].ToString();
                     _SESION.oUsuario.IDEmpleado = DatosUsuario.Rows[0]["idEmpleado"].ToString();
                     _SESION.oUsuario.Empleado = DatosUsuario.Rows[0]["empleado"].ToString();
+
+                    //PERMISOS DEL USUARIO
+                    Permisos = CacheManager.SystemCache.getPermisosUsuario(DatosUsuario.Rows[0]["usuario"].ToString());
+                    List<String> lista = new List<string>();
+                    for (int i = 0; i < Permisos.Rows.Count; i++)
+                    {
+                        lista.Add(Permisos.Rows[i]["opcion"].ToString());
+                    }
+                    _SESION.oUsuario.Opciones = lista;
                     Close();
                 }
                 else if (DatosUsuarioMedico.Rows.Count == 1)
@@ -56,6 +69,15 @@ namespace Sistema.GUI
                     _SESION.oUsuario.IDRol = DatosUsuarioMedico.Rows[0]["rol"].ToString();
                     _SESION.oUsuario.IDEmpleado = DatosUsuarioMedico.Rows[0]["jvpm"].ToString();
                     _SESION.oUsuario.Empleado = DatosUsuarioMedico.Rows[0]["medico"].ToString();
+
+                    //PERMISOS DEL USUARIO
+                    Permisos = CacheManager.SystemCache.getPermisosUsuario(DatosUsuarioMedico.Rows[0]["usuario"].ToString());
+                    List<String> lista = new List<string>();
+                    for (int i = 0; i < Permisos.Rows.Count; i++)
+                    {
+                        lista.Add(Permisos.Rows[i]["opcion"].ToString());
+                    }
+                    _SESION.oUsuario.Opciones = lista;
                     Close();
                 }
                 else
@@ -74,16 +96,17 @@ namespace Sistema.GUI
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
+            Environment.Exit(0);
         }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-            this.Select();
-        }
+        
 
         private void metroTextBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (Char.IsSeparator(e.KeyChar))   //No Permitir el espacio 
+            {
+                e.Handled = true;
+            }
             if ((int)e.KeyChar == (int)Keys.Enter || (int)e.KeyChar == ((int)Keys.Alt | (int)Keys.F4))
             {
                 Validar(metroTextBox1.Text, metroTextBox2.Text);
@@ -94,7 +117,8 @@ namespace Sistema.GUI
         {
             if (keydata == (Keys.Alt | Keys.F4))
             {
-                Application.Exit();
+                Environment.Exit(0);
+    
                 return true;
             }
             else
@@ -114,6 +138,17 @@ namespace Sistema.GUI
         private void metroButton1_Click(object sender, EventArgs e)
         {
             Validar(metroTextBox1.Text, metroTextBox2.Text);
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+            this.Select();
+        }
+
+        private void metroTextBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

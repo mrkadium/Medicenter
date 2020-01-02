@@ -46,5 +46,11 @@
     <Compile Include="Session.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CacheManager\CacheManager.csproj">
+      <Project>{f4cb0f86-2ce9-4d6d-a5d2-cd4a4d8fd40f}</Project>
+      <Name>CacheManager</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

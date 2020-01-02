@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,7 +21,7 @@ namespace General.GUI.Medicos
 
         private void Procesar()
         {
-            if (Verificacion())
+            if (Verificacion() && VerificacionTxbDui() && VerificacionTxbNit())
             {
                 CLS.Medicos oMedico = new CLS.Medicos();
                 CLS.Contactos oContacto = new CLS.Contactos();
@@ -80,7 +81,7 @@ namespace General.GUI.Medicos
                                 cont++;
                             }
 
-                            int contContactosAsig = 1;
+                            int contContactosAsig = 0;
 
                             //Asignamos los contactos creados al médico q acabamos de agregar
                             for (int g = 0; g < cont; g++)
@@ -127,138 +128,127 @@ namespace General.GUI.Medicos
                     //ACTUALIZANDO
                     if (oMedico.Actualizar())
                     {
-                        //Verificando si hay contactos en el dtgv
-                        if (int.Parse(dtgvDatosContactos.Rows.Count.ToString()) > 0 || int.Parse(dtgvDatosEspecialidad.Rows.Count.ToString()) > 0)
+                        //************************************************* CONTACTOS ************************************************
+
+                        //Recorremos todos los registros
+                        for (int x = 0; x < int.Parse(dtgvDatosContactos.Rows.Count.ToString()); x++)
                         {
-                            int can1 = 0;
-
-                            //************************************************* CONTACTOS ************************************************
-
-                            //Recorremos todos los registros
-                            for (int x = 0; x < int.Parse(dtgvDatosContactos.Rows.Count.ToString()); x++)
+                            //Validamos si contiene algo la celda
+                            if (dtgvDatosContactos.Rows[x].Cells[0].Value.ToString() == "")
                             {
-                                //Validamos si contiene algo la celda
-                                if (dtgvDatosContactos.Rows[x].Cells[0].Value.ToString() == "")
-                                {
-                                    //En este caso no contiene nada por lo que es un contacto nuevo y debemos insertarlo
-                                    oContacto.Tipo = dtgvDatosContactos.Rows[x].Cells[1].Value.ToString();
-                                    oContacto.Contacto = dtgvDatosContactos.Rows[x].Cells[2].Value.ToString();
+                                //En este caso no contiene nada por lo que es un contacto nuevo y debemos insertarlo
+                                oContacto.Tipo = dtgvDatosContactos.Rows[x].Cells[1].Value.ToString();
+                                oContacto.Contacto = dtgvDatosContactos.Rows[x].Cells[2].Value.ToString();
 
-                                    oContacto.Guardar();
-                                    cont++;
+                                oContacto.Guardar();
+                                cont++;
+                            }
+                        }
+
+                        //Recorremos la lista para eliminar los contactos desechados
+                        for(int y = 0; y < _idContactos.Count; y++)
+                        {
+                            int can2 = 0;
+
+                            //Recorremos los contactos que quedaron en el dtgv
+                            for (int h = 0; h < int.Parse(dtgvDatosContactos.Rows.Count.ToString()); h++)
+                            {
+                                if (dtgvDatosContactos.Rows[h].Cells[0].Value.ToString() == "")
+                                {
+
                                 }
                                 else
                                 {
-                                    can1++;
-                                }
-
-                            }
-
-                            //Recorremos la lista para eliminar los contactos desechados
-                            for(int y = 0; y < _idContactos.Count; y++)
-                            {
-                                int can2 = 0;
-
-                                //Recorremos los contactos que quedaron en el dtgv
-                                for (int h = 0; h < int.Parse(dtgvDatosContactos.Rows.Count.ToString()); h++)
-                                {
-                                    if (dtgvDatosContactos.Rows[h].Cells[0].Value.ToString() == "")
+                                    //Si lo q hay en la lista y lo q hay en el dtgv son iguales
+                                    if (_idContactos[y] == Convert.ToInt32(dtgvDatosContactos.Rows[h].Cells[0].Value.ToString()))
                                     {
-
+                                        can2++;
                                     }
-                                    else
-                                    {
-                                        //Si lo q hay en la lista y lo q hay en el dtgv son iguales
-                                        if (_idContactos[y] == Convert.ToInt32(dtgvDatosContactos.Rows[h].Cells[0].Value.ToString()))
-                                        {
-                                            can2++;
-                                        }
-                                    }
-                                }  
-                                //Si esto es igual a 0 quiere decir q no se escontro en el dtgv
-                                //Por lo tanto tenemos q eliminarlo
-                                if(can2 == 0)
-                                {
-                                    //Eliminanos la asociacion
-                                    oContactoMedico.Idcontacto = _idContactos[y];
-                                    oContactoMedico.Idmedico = Convert.ToInt32(txbIDMedico.Text);
-                                    oContactoMedico.EliminarPorContacto();
-
-                                    //Eliminanos el contacto
-                                    oContacto.Idcontacto = _idContactos[y];
-                                    oContacto.Eliminar();
                                 }
-                            }
-
-                            int contContactosAsig = 1;
-
-                            //Asignamos los contactos creados al médico q acabamos de agregar
-                            for (int g = 0; g < cont; g++)
+                            }  
+                            //Si esto es igual a 0 quiere decir q no se escontro en el dtgv
+                            //Por lo tanto tenemos q eliminarlo
+                            if(can2 == 0)
                             {
-                                oContactoMedico.Idcontacto = (Convert.ToInt32(lblContac.Text)) + contContactosAsig;
+                                //Eliminanos la asociacion
+                                oContactoMedico.Idcontacto = _idContactos[y];
                                 oContactoMedico.Idmedico = Convert.ToInt32(txbIDMedico.Text);
+                                oContactoMedico.EliminarPorContacto();
 
-                                oContactoMedico.Guardar();
-                                contContactosAsig++;
+                                //Eliminanos el contacto
+                                oContacto.Idcontacto = _idContactos[y];
+                                oContacto.Eliminar();
                             }
-
-                            //*********************************************************************************************************
-
-                            //▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ ESPECIALIDADES ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
-
-                            //Recorremos la lista de especialidades
-                            for (int y = 0; y < _idEspecialidades.Count; y++)
-                            {
-                                int can2 = 0;
-
-                                //Recorremos las especialidades que quedaron en el dtgv
-                                for (int h = 0; h < int.Parse(dtgvDatosEspecialidad.Rows.Count.ToString()); h++)
-                                {
-                                    //Si lo q hay en la lista y lo q hay en el dtgv son iguales
-                                    if (_idEspecialidades[y] == Convert.ToInt32(dtgvDatosEspecialidad.Rows[h].Cells[0].Value.ToString()))
-                                    {
-                                        can2++;
-                                    }
-                                }
-                                //Si esto es igual a 0 quiere decir q no se escontro en el dtgv
-                                //Por lo tanto tenemos q eliminarlo
-                                if (can2 == 0)
-                                {
-                                    //Eliminanos la asociacion
-                                    oEspecialidadesMedicos.Idespecialidad = _idEspecialidades[y];
-                                    oEspecialidadesMedicos.Idmedico = Convert.ToInt32(txbIDMedico.Text);
-                                    oEspecialidadesMedicos.EliminarPorEspecialidad();
-                                }
-                            }
-
-                            //Recorremos la lista de especialidades
-                            for (int y = 0; y < int.Parse(dtgvDatosEspecialidad.Rows.Count.ToString()); y++)
-                            {
-                                int can2 = 0;
-                                
-                                //Recorremos las especialidades que quedaron en el dtgv
-                                for (int h = 0; h < _idEspecialidades.Count; h++)
-                                {
-                                    //Si lo q hay en la lista y lo q hay en el dtgv son iguales
-                                    if (_idEspecialidades[h] == Convert.ToInt32(dtgvDatosEspecialidad.Rows[y].Cells[0].Value.ToString()))
-                                    {
-                                        can2++;
-                                    }
-                                }
-                                //Si esto es igual a 0 quiere decir q no se escontro en la lista
-                                //Por lo tanto tenemos q add la nueva asociacion
-                                if (can2 == 0)
-                                {
-                                    //Add la asociacion
-                                    oEspecialidadesMedicos.Idespecialidad = Convert.ToInt32(dtgvDatosEspecialidad.Rows[y].Cells[0].Value.ToString());
-                                    oEspecialidadesMedicos.Idmedico = Convert.ToInt32(txbIDMedico.Text);
-
-                                    oEspecialidadesMedicos.Guardar();
-                                }
-                            }
-
-                            //▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
                         }
+
+                        int contContactosAsig = 0;
+
+                        //Asignamos los contactos creados al médico q acabamos de agregar
+                        for (int g = 0; g < cont; g++)
+                        {
+                            oContactoMedico.Idcontacto = (Convert.ToInt32(lblContac.Text)) + contContactosAsig;
+                            oContactoMedico.Idmedico = Convert.ToInt32(txbIDMedico.Text);
+
+                            oContactoMedico.Guardar();
+                            contContactosAsig++;
+                        }
+
+                        //*********************************************************************************************************
+
+                        //▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ ESPECIALIDADES ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
+
+                        //Recorremos la lista de especialidades
+                        for (int y = 0; y < _idEspecialidades.Count; y++)
+                        {
+                            int can2 = 0;
+
+                            //Recorremos las especialidades que quedaron en el dtgv
+                            for (int h = 0; h < int.Parse(dtgvDatosEspecialidad.Rows.Count.ToString()); h++)
+                            {
+                                //Si lo q hay en la lista y lo q hay en el dtgv son iguales
+                                if (_idEspecialidades[y] == Convert.ToInt32(dtgvDatosEspecialidad.Rows[h].Cells[0].Value.ToString()))
+                                {
+                                    can2++;
+                                }
+                            }
+                            //Si esto es igual a 0 quiere decir q no se escontro en el dtgv
+                            //Por lo tanto tenemos q eliminarlo
+                            if (can2 == 0)
+                            {
+                                //Eliminanos la asociacion
+                                oEspecialidadesMedicos.Idespecialidad = _idEspecialidades[y];
+                                oEspecialidadesMedicos.Idmedico = Convert.ToInt32(txbIDMedico.Text);
+                                oEspecialidadesMedicos.EliminarPorEspecialidad();
+                            }
+                        }
+
+                        //Recorremos la lista de especialidades
+                        for (int y = 0; y < int.Parse(dtgvDatosEspecialidad.Rows.Count.ToString()); y++)
+                        {
+                            int can2 = 0;
+                                
+                            //Recorremos las especialidades que quedaron en el dtgv
+                            for (int h = 0; h < _idEspecialidades.Count; h++)
+                            {
+                                //Si lo q hay en la lista y lo q hay en el dtgv son iguales
+                                if (_idEspecialidades[h] == Convert.ToInt32(dtgvDatosEspecialidad.Rows[y].Cells[0].Value.ToString()))
+                                {
+                                    can2++;
+                                }
+                            }
+                            //Si esto es igual a 0 quiere decir q no se escontro en la lista
+                            //Por lo tanto tenemos q add la nueva asociacion
+                            if (can2 == 0)
+                            {
+                                //Add la asociacion
+                                oEspecialidadesMedicos.Idespecialidad = Convert.ToInt32(dtgvDatosEspecialidad.Rows[y].Cells[0].Value.ToString());
+                                oEspecialidadesMedicos.Idmedico = Convert.ToInt32(txbIDMedico.Text);
+
+                                oEspecialidadesMedicos.Guardar();
+                            }
+                        }
+
+                        //▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 
                         MessageBox.Show("Editado correctamente", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Close();
@@ -279,9 +269,89 @@ namespace General.GUI.Medicos
             if (txbNombres.TextLength <= 0) { Verificado = false; Notificador.SetError(txbNombres, "Este campo debe llenarse"); }
             if (txbApellidos.TextLength <= 0) { Verificado = false; Notificador.SetError(txbApellidos, "Este campo debe llenarse"); }
             if (txbMunicipio.TextLength <= 0) { Verificado = false; Notificador.SetError(txbMunicipio, "Este campo debe llenarse"); }
-            if (txbDireccion.TextLength <= 0) { Verificado = false; Notificador.SetError(txbDireccion, "Este campo debe llenarse"); }
-            if (txbDui.TextLength <= 0) { Verificado = false; Notificador.SetError(txbDui, "Este campo debe llenarse"); }
-            if (txbNit.TextLength <= 0) { Verificado = false; Notificador.SetError(txbNit, "Este campo debe llenarse"); }            
+            if (txbDireccion.TextLength <= 0) { Verificado = false; Notificador.SetError(txbDireccion, "Este campo debe llenarse"); }      
+
+            return Verificado;
+        }
+
+        private Boolean VerificacionTxbDui()
+        {
+            Boolean Verificado = true;
+            Notificador.Clear();
+
+            if (txbDui.Text == "        -")
+            {
+                Verificado = false;
+                Notificador.SetError(txbDui, "Este campo debe llenarse");
+            }
+            else
+            {
+                if (!txbDui.MaskFull)
+                {
+                    Verificado = false;
+                    Notificador.SetError(txbDui, "Campo incompleto");
+                }
+            }
+
+            return Verificado;
+        }
+
+        private Boolean VerificacionTxbNit()
+        {
+            Boolean Verificado = true;
+            Notificador.Clear();
+
+            if (txbNit.Text == "    -      -   -")
+            {
+                Verificado = false;
+                Notificador.SetError(txbNit, "Este campo debe llenarse");
+            }
+            else
+            {
+                if (!txbNit.MaskFull)
+                {
+                    Verificado = false;
+                    Notificador.SetError(txbNit, "Campo incompleto");
+                }
+            }
+
+            return Verificado;
+        }
+
+        public static bool IsValidEmail(string Email)
+        {
+            String strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
+                    @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+                    @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+            Regex re = new Regex(strRegex);
+
+            if (re.IsMatch(Email))
+            {
+                return (true);
+            }
+            else
+            {
+                return (false);
+            }
+        }
+
+        private Boolean VerificacionEmail()
+        {
+            Boolean Verificado = true;
+            Notificador.Clear();
+
+            if (txbContacto.Text.Length <= 0)
+            {
+                Verificado = true;
+            }
+            else
+            {
+                if (!IsValidEmail(txbContacto.Text))
+                {
+                    Verificado = false;
+                    Notificador.SetError(txbContacto, "El formato correcto es 'ejemplo@dominio.com'");
+                }
+            }
 
             return Verificado;
         }
@@ -387,7 +457,22 @@ namespace General.GUI.Medicos
             return Verificado;
         }
 
-    private void btnAgregarContacto_Click(object sender, EventArgs e)
+        private void btnAgregarContacto_Click(object sender, EventArgs e)
+        {
+            if (cmbTipo.SelectedValue.ToString() == "TELEFONO")
+            {
+                AddContact();
+            }
+            else
+            {
+                if (VerificacionEmail())
+                {
+                    AddContact();
+                }
+            }
+        }
+
+        private void AddContact()
         {
             if (VerificacionAddContactos())
             {
@@ -416,6 +501,9 @@ namespace General.GUI.Medicos
             Especialidades.GestionEspecialidades f = new Especialidades.GestionEspecialidades();
             AddOwnedForm(f);
             f.btnSeleccionar.Visible = true;
+            f.btnAgregar.Visible = false;
+            f.btnEditar.Visible = false;
+            f.btnEliminar.Visible = false;
             f.ShowDialog();
         }
         
@@ -448,6 +536,10 @@ namespace General.GUI.Medicos
                 //el resto de teclas pulsadas se desactivan 
                 e.Handled = true;
             }
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                Procesar();
+            }
         }
 
         private void txbContacto_KeyPress(object sender, KeyPressEventArgs e)
@@ -455,15 +547,242 @@ namespace General.GUI.Medicos
             //Si presiona Enter en el txbContacto add el contacto al dtgv
             if ((int)e.KeyChar == (int)Keys.Enter)
             {
-                if (VerificacionAddContactos())
+                if (cmbTipo.SelectedValue.ToString() == "TELEFONO")
                 {
-                    DataRow row = _Contactos.NewRow();
-
-                    row["tipo"] = cmbTipo.SelectedValue.ToString();
-                    row["contacto"] = txbContacto.Text;
-                    _Contactos.Rows.Add(row);
+                    AddContact();
+                }
+                else
+                {
+                    if (VerificacionEmail())
+                    {
+                        AddContact();
+                    }
                 }
             }
+        }
+
+        private void txbDui_Leave(object sender, EventArgs e)
+        {
+            VerificacionTxbDui();
+        }
+
+        private void txbNit_Leave(object sender, EventArgs e)
+        {
+            VerificacionTxbNit();
+        }
+
+        private void txbNombres_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Para obligar a que sólo se introduzcan letras
+            if (Char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar)) //Permitir teclas de control como retroceso 
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))   //Permitir el espacio 
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;   //el resto de teclas pulsadas se desactivan
+            }
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                Procesar();
+            }
+        }
+
+        private void txbApellidos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Para obligar a que sólo se introduzcan letras
+            if (Char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar)) //Permitir teclas de control como retroceso 
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))   //Permitir el espacio 
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;   //el resto de teclas pulsadas se desactivan
+            }
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                Procesar();
+            }
+        }
+
+        private void dtpFechaNacimiento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                Procesar();
+            }
+        }
+
+        private void dtpContratacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                if (dtpContratacion.Checked == false)
+                {
+                    dtpContratacion.Checked = true;
+                }
+                else
+                {
+                    Procesar();
+                }
+            }
+        }
+
+        private void cmbGenero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (cmbGenero.DroppedDown == false)
+            {
+                if ((int)e.KeyChar == (int)Keys.Enter)
+                {
+                    Procesar();
+                }
+            }
+        }
+
+        private void txbDui_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                Procesar();
+            }
+        }
+
+        private void txbNit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                Procesar();
+            }
+        }
+
+        private void cmbEstado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (cmbEstado.DroppedDown == false)
+            {
+                if ((int)e.KeyChar == (int)Keys.Enter)
+                {
+                    Procesar();
+                }
+            }
+        }
+
+        private void dtpSalida_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                if (dtpSalida.Checked == false)
+                {
+                    dtpSalida.Checked = true;
+                }
+                else
+                {
+                    Procesar();
+                }
+            }
+        }
+
+        private void cmbDepartamento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (cmbDepartamento.DroppedDown == false)
+            {
+                if ((int)e.KeyChar == (int)Keys.Enter)
+                {
+                    Procesar();
+                }
+            }
+        }
+
+        private void txbMunicipio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Para obligar a que sólo se introduzcan letras
+            if (Char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar)) //Permitir teclas de control como retroceso 
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))   //Permitir el espacio 
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;   //el resto de teclas pulsadas se desactivan
+            }
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                Procesar();
+            }
+        }
+
+        private void btnGuardar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                Procesar();
+            }
+        }
+
+        private void btnCancelar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                Close();
+            }
+        }
+
+        private void btnAgregarEspecialidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                Especialidades.GestionEspecialidades f = new Especialidades.GestionEspecialidades();
+                AddOwnedForm(f);
+                f.btnSeleccionar.Visible = true;
+                f.ShowDialog();
+            }
+        }
+
+        private void cmbGenero_Enter(object sender, EventArgs e)
+        {
+            cmbGenero.DroppedDown = true;
+        }
+
+        private void cmbEstado_Enter(object sender, EventArgs e)
+        {
+            cmbEstado.DroppedDown = true;
+        }
+
+        private void cmbDepartamento_Enter(object sender, EventArgs e)
+        {
+            cmbDepartamento.DroppedDown = true;
+        }
+
+        private void cmbTipo_Enter(object sender, EventArgs e)
+        {
+            cmbTipo.DroppedDown = true;
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -42,39 +42,7 @@ namespace General.CLS
 
             return Guardado;
         }
-
-        public Boolean Actualizar()
-        {
-
-            Boolean Actualizado = false;
-            StringBuilder Sentencia = new StringBuilder();
-            Sentencia.Append(
-                @"UPDATE contactos_medico SET 
-                idcontacto = " + _idcontacto + @", 
-                idmedico = " + _idmedico + @" 
-                WHERE idcontacto = " + _idcontacto + @" and 
-                idmedico = " + _idmedico + ";");
-
-            DBManager.CLS.DBOperacion oOperacion = new DBManager.CLS.DBOperacion();
-            try
-            {
-                if (oOperacion.Actualizar(Sentencia.ToString()) > 0)
-                {
-                    Actualizado = true;
-                }
-                else
-                {
-                    Actualizado = false;
-                }
-            }
-            catch
-            {
-                Actualizado = false;
-            }
-
-            return Actualizado;
-        }
-
+        
         public Boolean Eliminar()
         {
             Boolean Eliminado = false;

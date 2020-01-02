@@ -12,7 +12,12 @@ namespace Sistema.GUI
 {
     public partial class Principal : Form
     {
+        Boolean _Reinicio = false;
+
         SessionManager.Session _SESION = SessionManager.Session.Instancia;
+
+        public bool Reinicio { get => _Reinicio; set => _Reinicio = value; }
+
         public Principal()
         {
             InitializeComponent();
@@ -32,10 +37,23 @@ namespace Sistema.GUI
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
         }
-        
+
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keydata)
+        {
+            if (keydata == (Keys.Alt | Keys.F4))
+            {
+                Environment.Exit(0);
+
+                return true;
+            }
+            else
+            {
+                return base.ProcessCmdKey(ref msg, keydata);
+            }
+        }
+
         private void Principal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
         }
         
         private void button1_Click(object sender, EventArgs e)
@@ -57,9 +75,26 @@ namespace Sistema.GUI
         private void btnMenu_Click(object sender, EventArgs e)
         {
             Menu f = new Menu();
-            f.WindowState = FormWindowState.Maximized;
+            //f.WindowState = FormWindowState.Maximized;
             f.MdiParent = this;
             f.Show();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            _Reinicio = false;
+            this.Close();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            _Reinicio = false;
+            this.Close();
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

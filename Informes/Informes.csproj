@@ -1,0 +1,416 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8071BB63-08F4-46AA-8E46-A4BBEB68537A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Informes</RootNamespace>
+    <AssemblyName>Informes</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAT\dtInventario.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dtInventario.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAT\dtsConstanciaBuenaSalud.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dtsConstanciaBuenaSalud.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAT\dtsIncapacidadMedica.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dtsIncapacidadMedica.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAT\dtsVentas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dtsVentas.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAT\dtsVentasProductos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dtsVentasProductos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DAT\dtsVentasServicios.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dtsVentasServicios.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Compras\crComprasProductosEspecifico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Compras\crComprasProductosEspecifico.Designer.cs">
+      <DependentUpon>crComprasProductosEspecifico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Compras\crvComprasMarcaEspecifica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Compras\crvComprasMarcaEspecifica.Designer.cs">
+      <DependentUpon>crvComprasMarcaEspecifica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Compras\crvComprasProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Compras\crvComprasProductos.Designer.cs">
+      <DependentUpon>crvComprasProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Constancias\crConstanciaMedica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Constancias\crConstanciaMedica.Designer.cs">
+      <DependentUpon>crConstanciaMedica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Constancias\crvBuenSalud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Constancias\crvBuenSalud.Designer.cs">
+      <DependentUpon>crvBuenSalud.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Constancias\vrIncapacidadMedica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Constancias\vrIncapacidadMedica.Designer.cs">
+      <DependentUpon>vrIncapacidadMedica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Inventario\crvInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Inventario\crvInventario.Designer.cs">
+      <DependentUpon>crvInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Ventas\crVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Ventas\crVentas.Designer.cs">
+      <DependentUpon>crVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Ventas\crvProductoEspecifico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Ventas\crvProductoEspecifico.Designer.cs">
+      <DependentUpon>crvProductoEspecifico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Ventas\crvVentasMarcaEspecifica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Ventas\crvVentasMarcaEspecifica.Designer.cs">
+      <DependentUpon>crvVentasMarcaEspecifica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Ventas\crvVentasProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Ventas\crvVentasProductos.Designer.cs">
+      <DependentUpon>crvVentasProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Ventas\crvVentasServicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Ventas\crvVentasServicios.Designer.cs">
+      <DependentUpon>crvVentasServicios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="REP\Compras\crComprasMarcaEspecifica.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crComprasMarcaEspecifica.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="REP\Compras\crComprasProductoEspecifico.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crComprasProductoEspecifico.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="REP\Compras\crComprasProductos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crComprasProductos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="REP\Constancias\BuenaSalud.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BuenaSalud.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="REP\Constancias\ConstanciaMedica.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConstanciaMedica.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="REP\Constancias\IncapacidadMedica.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IncapacidadMedica.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="REP\Inventario\crInventario.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crInventario.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="REP\Inventario\crInventarioMarcaEspe.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crInventarioMarcaEspe.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="REP\Ventas\crVentas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crVentas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="REP\Ventas\crVentasMarcaEspecifica.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crVentasMarcaEspecifica.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="REP\Ventas\crVentasProductoEspecifico.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crVentasProductoEspecifico.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="REP\Ventas\crVentasProductos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crVentasProductos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="REP\Ventas\crVentasServicios.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crVentasServicios.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="GUI\Constancias\crConstanciaMedica.resx">
+      <DependentUpon>crConstanciaMedica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Constancias\crvBuenSalud.resx">
+      <DependentUpon>crvBuenSalud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Constancias\vrIncapacidadMedica.resx">
+      <DependentUpon>vrIncapacidadMedica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Ventas\crVentas.resx">
+      <DependentUpon>crVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="REP\Compras\crComprasMarcaEspecifica.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crComprasMarcaEspecifica.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REP\Compras\crComprasProductoEspecifico.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crComprasProductoEspecifico.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REP\Compras\crComprasProductos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crComprasProductos.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REP\Constancias\BuenaSalud.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BuenaSalud.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REP\Constancias\ConstanciaMedica.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ConstanciaMedica.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REP\Constancias\IncapacidadMedica.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>IncapacidadMedica.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REP\Inventario\crInventario.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crInventario.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REP\Inventario\crInventarioMarcaEspe.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crInventarioMarcaEspe.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REP\Ventas\crVentas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crVentas.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REP\Ventas\crVentasMarcaEspecifica.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crVentasMarcaEspecifica.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REP\Ventas\crVentasProductoEspecifico.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crVentasProductoEspecifico.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REP\Ventas\crVentasProductos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crVentasProductos.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REP\Ventas\crVentasServicios.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crVentasServicios.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="DAT\dtInventario.xsc">
+      <DependentUpon>dtInventario.xsd</DependentUpon>
+    </None>
+    <None Include="DAT\dtInventario.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dtInventario.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DAT\dtInventario.xss">
+      <DependentUpon>dtInventario.xsd</DependentUpon>
+    </None>
+    <None Include="DAT\dtsConstanciaBuenaSalud.xsc">
+      <DependentUpon>dtsConstanciaBuenaSalud.xsd</DependentUpon>
+    </None>
+    <None Include="DAT\dtsConstanciaBuenaSalud.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dtsConstanciaBuenaSalud.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DAT\dtsConstanciaBuenaSalud.xss">
+      <DependentUpon>dtsConstanciaBuenaSalud.xsd</DependentUpon>
+    </None>
+    <None Include="DAT\dtsIncapacidadMedica.xsc">
+      <DependentUpon>dtsIncapacidadMedica.xsd</DependentUpon>
+    </None>
+    <None Include="DAT\dtsIncapacidadMedica.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dtsIncapacidadMedica.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DAT\dtsIncapacidadMedica.xss">
+      <DependentUpon>dtsIncapacidadMedica.xsd</DependentUpon>
+    </None>
+    <None Include="DAT\dtsVentas.xsc">
+      <DependentUpon>dtsVentas.xsd</DependentUpon>
+    </None>
+    <None Include="DAT\dtsVentas.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dtsVentas.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DAT\dtsVentas.xss">
+      <DependentUpon>dtsVentas.xsd</DependentUpon>
+    </None>
+    <None Include="DAT\dtsVentasProductos.xsc">
+      <DependentUpon>dtsVentasProductos.xsd</DependentUpon>
+    </None>
+    <None Include="DAT\dtsVentasProductos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dtsVentasProductos.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DAT\dtsVentasProductos.xss">
+      <DependentUpon>dtsVentasProductos.xsd</DependentUpon>
+    </None>
+    <None Include="DAT\dtsVentasServicios.xsc">
+      <DependentUpon>dtsVentasServicios.xsd</DependentUpon>
+    </None>
+    <None Include="DAT\dtsVentasServicios.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dtsVentasServicios.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DAT\dtsVentasServicios.xss">
+      <DependentUpon>dtsVentasServicios.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CLS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\archive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CacheManager\CacheManager.csproj">
+      <Project>{f4cb0f86-2ce9-4d6d-a5d2-cd4a4d8fd40f}</Project>
+      <Name>CacheManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

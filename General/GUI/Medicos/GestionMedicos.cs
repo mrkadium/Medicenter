@@ -12,7 +12,15 @@ namespace General.GUI.Medicos
 {
     public partial class GestionMedicos : Form
     {
+
+        int tipoOperacion;
+        bool _NoSeleccionMedico = true;
+
         BindingSource _Medicos = new BindingSource();
+
+        public int TipoOperacion { get => tipoOperacion; set => tipoOperacion = value; }
+        public bool NoSeleccionMedico { get => _NoSeleccionMedico; set => _NoSeleccionMedico = value; }
+
         private void CargarDatos()
         {
             try
@@ -47,9 +55,24 @@ namespace General.GUI.Medicos
             InitializeComponent();
         }
 
+        SessionManager.Session _Sesion = SessionManager.Session.Instancia;
+
         private void GestionMedicos_Load(object sender, EventArgs e)
         {
             CargarDatos();
+
+            if (!_Sesion.oUsuario.verificarPermiso("AGREGAR"))
+            {
+                btnAgregar.Visible = false;
+            }
+            if (!_Sesion.oUsuario.verificarPermiso("EDITAR"))
+            {
+                btnEditar.Visible = false;
+            }
+            if (!_Sesion.oUsuario.verificarPermiso("ELIMINAR"))
+            {
+                btnEliminar.Visible = false;
+            }
         }
 
         private void txbFiltro_TextChanged(object sender, EventArgs e)
@@ -59,12 +82,31 @@ namespace General.GUI.Medicos
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
+            if (NoSeleccionMedico)
+            {
+                if (tipoOperacion == 0)
+                {
+                    Usuarios.EdicionUsuarios f = Owner as Usuarios.EdicionUsuarios;
+
+                    f.txbIdPropietario.Text = dtgvDatos.CurrentRow.Cells["idmedico"].Value.ToString();
+                    f.txbPropietario.Text = dtgvDatos.CurrentRow.Cells["nombres"].Value.ToString() + " " + dtgvDatos.CurrentRow.Cells["apellidos"].Value.ToString();
+                }
+                else if (tipoOperacion == 1)
+                {
+                    Constancias.CapDatIncapacidad f = Owner as Constancias.CapDatIncapacidad;
+
+                    f.txbidMedico.Text = dtgvDatos.CurrentRow.Cells["idmedico"].Value.ToString();
+                    f.txbMedico.Text = dtgvDatos.CurrentRow.Cells["nombres"].Value.ToString() + " " + dtgvDatos.CurrentRow.Cells["apellidos"].Value.ToString();
+                }
+            }
             Close();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             EdicionMedicos f = new EdicionMedicos();
+            f.lblID.Visible = false;
+            f.txbIDMedico.Visible = false;
             f.dtpContratacion.Text = null;
             f.dtpSalida.Text = null;
             f.lblIDpropietario.Text = dtgvDatos.Rows[0].Cells["idpropietario"].Value.ToString();
@@ -75,120 +117,134 @@ namespace General.GUI.Medicos
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea editar el registro seleccionado?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {                
-                EdicionMedicos f = new EdicionMedicos();
-                DataTable idContactosAModificar = new DataTable();
-                DataTable idEspecialidadesAModificar = new DataTable();
-
-                f.lblContac.Text = dtgvDatos.Rows[0].Cells["idcontacto"].Value.ToString();
-
-                idContactosAModificar = CacheManager.SystemCache.IDContactosABorrarOModificar(Convert.ToInt32(dtgvDatos.CurrentRow.Cells["idmedico"].Value.ToString()));
-                idEspecialidadesAModificar = CacheManager.SystemCache.EspecialidadesAModificar(Convert.ToInt32(dtgvDatos.CurrentRow.Cells["idmedico"].Value.ToString()));
-
-                //Pasamos los contactos al dtgv de edición
-                for (int i = 0; i < int.Parse(idContactosAModificar.Rows.Count.ToString()); i++)
+            if (Convert.ToInt32(dtgvDatos.Rows.Count.ToString()) <= 0)
+            {
+                MessageBox.Show("Actualmente no existe ningún registro", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if (MessageBox.Show("Desea editar el registro seleccionado?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    f._idContactos.Add(Convert.ToInt32(idContactosAModificar.Rows[i]["idcontacto"].ToString()));
+                    EdicionMedicos f = new EdicionMedicos();
+                    DataTable idContactosAModificar = new DataTable();
+                    DataTable idEspecialidadesAModificar = new DataTable();
 
-                    DataRow row = f._Contactos.NewRow();
+                    f.lblContac.Text = dtgvDatos.Rows[0].Cells["idcontacto"].Value.ToString();
 
-                    row["idcontacto"] = idContactosAModificar.Rows[i]["idcontacto"].ToString();
-                    row["tipo"] = idContactosAModificar.Rows[i]["tipo"].ToString();
-                    row["contacto"] = idContactosAModificar.Rows[i]["contacto"].ToString();
-                    f._Contactos.Rows.Add(row);
+                    idContactosAModificar = CacheManager.SystemCache.IDContactosABorrarOModificar(Convert.ToInt32(dtgvDatos.CurrentRow.Cells["idmedico"].Value.ToString()));
+                    idEspecialidadesAModificar = CacheManager.SystemCache.EspecialidadesAModificar(Convert.ToInt32(dtgvDatos.CurrentRow.Cells["idmedico"].Value.ToString()));
+
+                    //Pasamos los contactos al dtgv de edición
+                    for (int i = 0; i < int.Parse(idContactosAModificar.Rows.Count.ToString()); i++)
+                    {
+                        f._idContactos.Add(Convert.ToInt32(idContactosAModificar.Rows[i]["idcontacto"].ToString()));
+
+                        DataRow row = f._Contactos.NewRow();
+
+                        row["idcontacto"] = idContactosAModificar.Rows[i]["idcontacto"].ToString();
+                        row["tipo"] = idContactosAModificar.Rows[i]["tipo"].ToString();
+                        row["contacto"] = idContactosAModificar.Rows[i]["contacto"].ToString();
+                        f._Contactos.Rows.Add(row);
+                    }
+
+                    //Pasamos las especialidades al dtgv de edición
+                    for (int i = 0; i < int.Parse(idEspecialidadesAModificar.Rows.Count.ToString()); i++)
+                    {
+                        f._idEspecialidades.Add(Convert.ToInt32(idEspecialidadesAModificar.Rows[i]["idespecialidad"].ToString()));
+
+                        DataRow row = f._Especialidades.NewRow();
+
+                        row["idespecialidad"] = idEspecialidadesAModificar.Rows[i]["idespecialidad"].ToString();
+                        row["especialidad"] = idEspecialidadesAModificar.Rows[i]["especialidad"].ToString();
+                        f._Especialidades.Rows.Add(row);
+                    }
+
+                    //Sincronizando interfaz gráfica con registro seleccionado
+                    //(Muestra los datos del registro a editar)
+                    f.txbIDMedico.Text = dtgvDatos.CurrentRow.Cells["idmedico"].Value.ToString();
+                    f.txbJVPM.Text = dtgvDatos.CurrentRow.Cells["jvpm"].Value.ToString();
+                    f.txbNombres.Text = dtgvDatos.CurrentRow.Cells["nombres"].Value.ToString();
+                    f.txbApellidos.Text = dtgvDatos.CurrentRow.Cells["apellidos"].Value.ToString();
+                    f.cmbGenero.SelectedValue = dtgvDatos.CurrentRow.Cells["genero"].Value.ToString();
+                    f.dtpFechaNacimiento.Text = dtgvDatos.CurrentRow.Cells["fecha_nacimiento"].Value.ToString();
+                    f.txbMunicipio.Text = dtgvDatos.CurrentRow.Cells["municipio"].Value.ToString();
+                    f.txbDireccion.Text = dtgvDatos.CurrentRow.Cells["Direcc"].Value.ToString();
+                    f.txbDui.Text = dtgvDatos.CurrentRow.Cells["dui"].Value.ToString();
+                    f.txbNit.Text = dtgvDatos.CurrentRow.Cells["nit"].Value.ToString();
+                    f.dtpContratacion.Text = dtgvDatos.CurrentRow.Cells["contratacion"].Value.ToString();
+                    f.dtpSalida.Text = dtgvDatos.CurrentRow.Cells["salida"].Value.ToString();
+                    f.cmbEstado.SelectedValue = dtgvDatos.CurrentRow.Cells["estado"].Value.ToString();
+                    f.cmbDepartamento.SelectedValue = dtgvDatos.CurrentRow.Cells["iddepartamento"].Value.ToString();
+                    f.ShowDialog();
+                    CargarDatos();
                 }
-
-                //Pasamos las especialidades al dtgv de edición
-                for (int i = 0; i < int.Parse(idEspecialidadesAModificar.Rows.Count.ToString()); i++)
-                {
-                    f._idEspecialidades.Add(Convert.ToInt32(idEspecialidadesAModificar.Rows[i]["idespecialidad"].ToString()));
-
-                    DataRow row = f._Especialidades.NewRow();
-
-                    row["idespecialidad"] = idEspecialidadesAModificar.Rows[i]["idespecialidad"].ToString();
-                    row["especialidad"] = idEspecialidadesAModificar.Rows[i]["especialidad"].ToString();
-                    f._Especialidades.Rows.Add(row);
-                }
-
-                //Sincronizando interfaz gráfica con registro seleccionado
-                //(Muestra los datos del registro a editar)
-                f.txbIDMedico.Text = dtgvDatos.CurrentRow.Cells["idmedico"].Value.ToString();
-                f.txbJVPM.Text = dtgvDatos.CurrentRow.Cells["jvpm"].Value.ToString();
-                f.txbNombres.Text = dtgvDatos.CurrentRow.Cells["nombres"].Value.ToString();
-                f.txbApellidos.Text = dtgvDatos.CurrentRow.Cells["apellidos"].Value.ToString();
-                f.cmbGenero.SelectedValue = dtgvDatos.CurrentRow.Cells["genero"].Value.ToString();
-                f.dtpFechaNacimiento.Text = dtgvDatos.CurrentRow.Cells["fecha_nacimiento"].Value.ToString();
-                f.txbMunicipio.Text = dtgvDatos.CurrentRow.Cells["municipio"].Value.ToString();
-                f.txbDireccion.Text = dtgvDatos.CurrentRow.Cells["Direcc"].Value.ToString();
-                f.txbDui.Text = dtgvDatos.CurrentRow.Cells["dui"].Value.ToString();
-                f.txbNit.Text = dtgvDatos.CurrentRow.Cells["nit"].Value.ToString();
-                f.dtpContratacion.Text = dtgvDatos.CurrentRow.Cells["contratacion"].Value.ToString();
-                f.dtpSalida.Text = dtgvDatos.CurrentRow.Cells["salida"].Value.ToString();
-                f.cmbEstado.SelectedValue = dtgvDatos.CurrentRow.Cells["estado"].Value.ToString();
-                f.cmbDepartamento.SelectedValue = dtgvDatos.CurrentRow.Cells["iddepartamento"].Value.ToString();
-                f.ShowDialog();
-                CargarDatos();
             }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea eliminar el registro seleccionado?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (Convert.ToInt32(dtgvDatos.Rows.Count.ToString()) <= 0)
             {
-                int idmedico = Convert.ToInt32(dtgvDatos.CurrentRow.Cells["idmedico"].Value.ToString());
-
-                CLS.Medicos oMedico = new CLS.Medicos();
-                oMedico.Idmedico = idmedico;
-                if (oMedico.Eliminar())
+                MessageBox.Show("Actualmente no existe ningún registro", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if (MessageBox.Show("Desea eliminar el registro seleccionado?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    //Sino tiene contactos asociados se elimina directamente el registro
-                    MessageBox.Show("Registro eliminado exitosamente", "Confirmacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    CargarDatos();
-                }
-                else
-                {   
-                    //En caso que si los tenga, preguntamos si desea continuar
-                    if (MessageBox.Show("Si continua, se eliminaran los contactos asociados al registro", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    int idmedico = Convert.ToInt32(dtgvDatos.CurrentRow.Cells["idmedico"].Value.ToString());
+
+                    CLS.Medicos oMedico = new CLS.Medicos();
+                    oMedico.Idmedico = idmedico;
+                    if (oMedico.Eliminar())
                     {
-                        CLS.Contactos oContacto = new CLS.Contactos();
-                        CLS.ContactosMedicos oContacMedico = new CLS.ContactosMedicos();
-                        CLS.EspecialidadesMedicos oEspecialidades = new CLS.EspecialidadesMedicos();
-                        DataTable idContactosAEliminar = new DataTable();
-
-                        idContactosAEliminar = CacheManager.SystemCache.IDContactosABorrarOModificar(idmedico);
-
-                        //Eliminamos las asociaciones de contactos
-                        oContacMedico.Idmedico = idmedico;
-                        oContacMedico.Eliminar();
-
-                        //Eliminamos los contactos
-                        for (int i = 0; i < int.Parse(idContactosAEliminar.Rows.Count.ToString()); i++)
+                        //Si no tiene referencias de contactos se elimina directamente el registro
+                        MessageBox.Show("Registro eliminado exitosamente", "Confirmacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarDatos();
+                    }
+                    else
+                    {
+                        //En caso que si los tenga, preguntamos si desea continuar
+                        if (MessageBox.Show("Si continua, se eliminaran los contactos asociados al registro", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            oContacto.Idcontacto = Convert.ToInt32(idContactosAEliminar.Rows[i]["idcontacto"].ToString());
-                            oContacto.Eliminar();
-                        }
+                            CLS.Contactos oContacto = new CLS.Contactos();
+                            CLS.ContactosMedicos oContacMedico = new CLS.ContactosMedicos();
+                            CLS.EspecialidadesMedicos oEspecialidades = new CLS.EspecialidadesMedicos();
+                            DataTable idContactosAEliminar = new DataTable();
 
-                        //Eliminamos las asociaciones de especialidades
-                        oEspecialidades.Idmedico = idmedico;
-                        oEspecialidades.Eliminar();
+                            idContactosAEliminar = CacheManager.SystemCache.IDContactosABorrarOModificar(idmedico);
 
-                        //Eliminamos el registro
-                        if (oMedico.Eliminar())
-                        {
-                            //Si se elimino correctamente notificamos q se realizo bien
-                            MessageBox.Show("Registro eliminado exitosamente", "Confirmacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            CargarDatos();
+                            //Eliminamos las referencias de contactos
+                            oContacMedico.Idmedico = idmedico;
+                            oContacMedico.Eliminar();
+
+                            //Eliminamos los contactos
+                            for (int i = 0; i < int.Parse(idContactosAEliminar.Rows.Count.ToString()); i++)
+                            {
+                                oContacto.Idcontacto = Convert.ToInt32(idContactosAEliminar.Rows[i]["idcontacto"].ToString());
+                                oContacto.Eliminar();
+                            }
+
+                            //Eliminamos las referencias de especialidades
+                            oEspecialidades.Idmedico = idmedico;
+                            oEspecialidades.Eliminar();
+
+                            //Eliminamos el registro
+                            if (oMedico.Eliminar())
+                            {
+                                //Si se elimino correctamente notificamos q se realizo bien
+                                MessageBox.Show("Registro eliminado exitosamente", "Confirmacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                CargarDatos();
+                            }
+                            else
+                            {
+                                MessageBox.Show("El registro no pudo ser eliminado correctamente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                            }
                         }
                         else
                         {
                             MessageBox.Show("El registro no pudo ser eliminado correctamente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("El registro no pudo ser eliminado correctamente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }

@@ -79,10 +79,52 @@ namespace General.GUI.Especialidades
 
         private void txbEspecialidad_KeyPress(object sender, KeyPressEventArgs e)
         {
+            //Para obligar a que sólo se introduzcan letras
+            if (Char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar)) //Permitir teclas de control como retroceso 
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))   //Permitir el espacio 
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;   //el resto de teclas pulsadas se desactivan
+            }
             if ((int)e.KeyChar == (int)Keys.Enter)
             {
                 Procesar();
             }
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                Procesar();
+            }
+        }
+
+        private void btnAgregar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                Procesar();
+            }
+        }
+
+        private void btnCancelar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter)
+            {
+                Close();
+            }
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -18,12 +18,36 @@ namespace General.CLS
             Vmember = vmem;
         }
 
+        public static String ConvertToDot(String number)
+        {
+            String nuevo = "";
+            for (int i = 0; i < number.Length; i++)
+            {
+                if (number[i].ToString().Equals(","))
+                {
+                    nuevo += ".";
+                }
+                else
+                {
+                    nuevo += number[i];
+                }
+            }
+            return nuevo;
+        }
 
         public static cmbEstados[] Estados()
         {
             return new cmbEstados[] {
                     new cmbEstados("ACTIVO", "ACTIVO"),
                     new cmbEstados("INACTIVO", "INACTIVO")
+                };
+        }
+
+        public static cmbEstados[] EstadosUsuarios()
+        {
+            return new cmbEstados[] {
+                    new cmbEstados("ACTIVO", "ACTIVO"),
+                    new cmbEstados("BLOQUEADO", "BLOQUEADO")
                 };
         }
 
@@ -40,6 +64,31 @@ namespace General.CLS
             return new cmbEstados[] {
                     new cmbEstados("TELEFONO", "TELEFONO"),
                     new cmbEstados("EMAIL", "EMAIL")
+                };
+        }
+
+        public static cmbEstados[] Clasificacion()
+        {
+            return new cmbEstados[] {
+                    new cmbEstados("GESTION", "GESTION"),
+                    new cmbEstados("COMPRA", "COMPRA"),
+                    new cmbEstados("VENTA", "VENTA")
+                };
+        }
+
+        public static cmbEstados[] CategoriaConsumible()
+        {
+            return new cmbEstados[] {
+                    new cmbEstados("PRODUCTO", "PRODUCTO"),
+                    new cmbEstados("SERVICIO", "SERVICIO")
+                };
+        }
+
+        public static cmbEstados[] EstadoExamen()
+        {
+            return new cmbEstados[] {
+                    new cmbEstados("PENDIENTE", "PENDIENTE"),
+                    new cmbEstados("ANALIZADO", "ANALIZADO")
                 };
         }
     }

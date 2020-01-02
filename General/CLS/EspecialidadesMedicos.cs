@@ -10,11 +10,9 @@ namespace General.CLS
     {
         int _idespecialidad;
         int _idmedico;
-        int _idespeViejo;
 
         public int Idespecialidad { get => _idespecialidad; set => _idespecialidad = value; }
         public int Idmedico { get => _idmedico; set => _idmedico = value; }
-        public int IdespeViejo { get => _idespeViejo; set => _idespeViejo = value; }
 
         public Boolean Guardar()
         {
@@ -44,39 +42,7 @@ namespace General.CLS
 
             return Guardado;
         }
-
-        public Boolean Actualizar()
-        {
-
-            Boolean Actualizado = false;
-            StringBuilder Sentencia = new StringBuilder();
-            Sentencia.Append(
-                @"UPDATE especialidades_medico SET 
-                idespecialidad = " + _idespecialidad + @", 
-                idmedico = " + _idmedico + @" 
-                WHERE idespecialidad = " + _idespeViejo + @" and 
-                idmedico = " + _idmedico + ";");
-
-            DBManager.CLS.DBOperacion oOperacion = new DBManager.CLS.DBOperacion();
-            try
-            {
-                if (oOperacion.Actualizar(Sentencia.ToString()) > 0)
-                {
-                    Actualizado = true;
-                }
-                else
-                {
-                    Actualizado = false;
-                }
-            }
-            catch
-            {
-                Actualizado = false;
-            }
-
-            return Actualizado;
-        }
-
+        
         public Boolean Eliminar()
         {
             Boolean Eliminado = false;

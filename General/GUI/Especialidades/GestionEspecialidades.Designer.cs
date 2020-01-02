@@ -43,8 +43,8 @@
             this.txbFiltro = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.btnSeleccionar = new System.Windows.Forms.ToolStripButton();
-            this.idespecialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idespecialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDatos)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -180,14 +180,6 @@
             this.btnSeleccionar.Visible = false;
             this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
-            // idespecialidad
-            // 
-            this.idespecialidad.DataPropertyName = "idespecialidad";
-            this.idespecialidad.HeaderText = "ID";
-            this.idespecialidad.MinimumWidth = 75;
-            this.idespecialidad.Name = "idespecialidad";
-            this.idespecialidad.ReadOnly = true;
-            // 
             // especialidad
             // 
             this.especialidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -196,6 +188,14 @@
             this.especialidad.MinimumWidth = 200;
             this.especialidad.Name = "especialidad";
             this.especialidad.ReadOnly = true;
+            // 
+            // idespecialidad
+            // 
+            this.idespecialidad.DataPropertyName = "idespecialidad";
+            this.idespecialidad.HeaderText = "ID";
+            this.idespecialidad.MinimumWidth = 75;
+            this.idespecialidad.Name = "idespecialidad";
+            this.idespecialidad.ReadOnly = true;
             // 
             // GestionEspecialidades
             // 

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dtsConstanciaBuenaSalud" targetNamespace="http://tempuri.org/dtsConstanciaBuenaSalud.xsd" xmlns:mstns="http://tempuri.org/dtsConstanciaBuenaSalud.xsd" xmlns="http://tempuri.org/dtsConstanciaBuenaSalud.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dtsConstanciaBuenaSalud" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dtsConstanciaBuenaSalud" msprop:Generator_UserDSName="dtsConstanciaBuenaSalud">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="BuenaSalud" msprop:Generator_TableClassName="BuenaSaludDataTable" msprop:Generator_TableVarName="tableBuenaSalud" msprop:Generator_TablePropName="BuenaSalud" msprop:Generator_RowDeletingName="BuenaSaludRowDeleting" msprop:Generator_RowChangingName="BuenaSaludRowChanging" msprop:Generator_RowEvHandlerName="BuenaSaludRowChangeEventHandler" msprop:Generator_RowDeletedName="BuenaSaludRowDeleted" msprop:Generator_UserTableName="BuenaSalud" msprop:Generator_RowChangedName="BuenaSaludRowChanged" msprop:Generator_RowEvArgName="BuenaSaludRowChangeEvent" msprop:Generator_RowClassName="BuenaSaludRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nombrePaciente" msprop:Generator_ColumnVarNameInTable="columnnombrePaciente" msprop:Generator_ColumnPropNameInRow="nombrePaciente" msprop:Generator_ColumnPropNameInTable="nombrePacienteColumn" msprop:Generator_UserColumnName="nombrePaciente" type="xs:string" minOccurs="0" />
+              <xs:element name="Edad" msprop:Generator_ColumnVarNameInTable="columnEdad" msprop:Generator_ColumnPropNameInRow="Edad" msprop:Generator_ColumnPropNameInTable="EdadColumn" msprop:Generator_UserColumnName="Edad" type="xs:int" minOccurs="0" />
+              <xs:element name="jvpm" msprop:Generator_ColumnVarNameInTable="columnjvpm" msprop:Generator_ColumnPropNameInRow="jvpm" msprop:Generator_ColumnPropNameInTable="jvpmColumn" msprop:Generator_UserColumnName="jvpm" type="xs:string" minOccurs="0" />
+              <xs:element name="abreviacion" msprop:Generator_ColumnVarNameInTable="columnabreviacion" msprop:Generator_ColumnPropNameInRow="abreviacion" msprop:Generator_ColumnPropNameInTable="abreviacionColumn" msprop:Generator_UserColumnName="abreviacion" type="xs:string" minOccurs="0" />
+              <xs:element name="nombreMedico" msprop:Generator_ColumnVarNameInTable="columnnombreMedico" msprop:Generator_ColumnPropNameInRow="nombreMedico" msprop:Generator_ColumnPropNameInTable="nombreMedicoColumn" msprop:Generator_UserColumnName="nombreMedico" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

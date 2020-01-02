@@ -44,12 +44,100 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="CLS\Cargos.cs" />
     <Compile Include="CLS\cmbEstados.cs" />
+    <Compile Include="CLS\Compra.cs" />
+    <Compile Include="CLS\Consumible.cs" />
     <Compile Include="CLS\Contactos.cs" />
+    <Compile Include="CLS\ContactosEmpleados.cs" />
     <Compile Include="CLS\ContactosMedicos.cs" />
+    <Compile Include="CLS\Detalle_operacion.cs" />
+    <Compile Include="CLS\Empleados.cs" />
     <Compile Include="CLS\Especialidades.cs" />
     <Compile Include="CLS\EspecialidadesMedicos.cs" />
+    <Compile Include="CLS\Examen.cs" />
+    <Compile Include="CLS\Laboratorio.cs" />
+    <Compile Include="CLS\Marca.cs" />
     <Compile Include="CLS\Medicos.cs" />
+    <Compile Include="CLS\Opciones.cs" />
+    <Compile Include="CLS\Operacion.cs" />
+    <Compile Include="CLS\Pacientes.cs" />
+    <Compile Include="CLS\Roles.cs" />
+    <Compile Include="CLS\Usuarios.cs" />
+    <Compile Include="CLS\UsuariosMedicosEmpleados.cs" />
+    <Compile Include="CLS\Venta.cs" />
+    <Compile Include="GUI\Cargos\EdicionCargos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Cargos\EdicionCargos.Designer.cs">
+      <DependentUpon>EdicionCargos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Cargos\GestionCargos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Cargos\GestionCargos.Designer.cs">
+      <DependentUpon>GestionCargos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Compras\DetalleCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Compras\DetalleCompra.Designer.cs">
+      <DependentUpon>DetalleCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Compras\EdicionCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Compras\EdicionCompra.Designer.cs">
+      <DependentUpon>EdicionCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Compras\GestionCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Compras\GestionCompras.Designer.cs">
+      <DependentUpon>GestionCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Constancias\CapDatIncapacidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Constancias\CapDatIncapacidad.Designer.cs">
+      <DependentUpon>CapDatIncapacidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Consultas\EdicionConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Consultas\EdicionConsulta.Designer.cs">
+      <DependentUpon>EdicionConsulta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Consultas\GestionConsultas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Consultas\GestionConsultas.Designer.cs">
+      <DependentUpon>GestionConsultas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Consumibles\EdicionConsumibles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Consumibles\EdicionConsumibles.Designer.cs">
+      <DependentUpon>EdicionConsumibles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Consumibles\GestionConsumibles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Consumibles\GestionConsumibles.Designer.cs">
+      <DependentUpon>GestionConsumibles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Empleados\EdicionEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Empleados\EdicionEmpleados.Designer.cs">
+      <DependentUpon>EdicionEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Empleados\GestionEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Empleados\GestionEmpleados.Designer.cs">
+      <DependentUpon>GestionEmpleados.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Especialidades\EdicionEspecialidades.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +149,30 @@
     </Compile>
     <Compile Include="GUI\Especialidades\GestionEspecialidades.Designer.cs">
       <DependentUpon>GestionEspecialidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Exámenes\EdicionExamen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Exámenes\EdicionExamen.Designer.cs">
+      <DependentUpon>EdicionExamen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Inventarios\GestionInventarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Inventarios\GestionInventarios.Designer.cs">
+      <DependentUpon>GestionInventarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Marcas\EdicionMarca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Marcas\EdicionMarca.Designer.cs">
+      <DependentUpon>EdicionMarca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Marcas\GestionMarcas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Marcas\GestionMarcas.Designer.cs">
+      <DependentUpon>GestionMarcas.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Medicos\EdicionMedicos.cs">
       <SubType>Form</SubType>
@@ -74,6 +186,108 @@
     <Compile Include="GUI\Medicos\GestionMedicos.Designer.cs">
       <DependentUpon>GestionMedicos.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Opciones\EdicionOpciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Opciones\EdicionOpciones.Designer.cs">
+      <DependentUpon>EdicionOpciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Opciones\GestionOpciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Opciones\GestionOpciones.Designer.cs">
+      <DependentUpon>GestionOpciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pacientes\EdicionPacientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Pacientes\EdicionPacientes.Designer.cs">
+      <DependentUpon>EdicionPacientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pacientes\GestionPacientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Pacientes\GestionPacientes.Designer.cs">
+      <DependentUpon>GestionPacientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Permisos\GestionPermisos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Permisos\GestionPermisos.Designer.cs">
+      <DependentUpon>GestionPermisos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Proveedores\EdicionProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Proveedores\EdicionProveedor.Designer.cs">
+      <DependentUpon>EdicionProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Proveedores\GestionProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Proveedores\GestionProveedores.Designer.cs">
+      <DependentUpon>GestionProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ReportCompras\CapDatReporteCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ReportCompras\CapDatReporteCompras.Designer.cs">
+      <DependentUpon>CapDatReporteCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ReportInventario\CapDatInventarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ReportInventario\CapDatInventarios.Designer.cs">
+      <DependentUpon>CapDatInventarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ReportVentas\CapDatReporteVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ReportVentas\CapDatReporteVentas.Designer.cs">
+      <DependentUpon>CapDatReporteVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Roles\EdicionRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Roles\EdicionRoles.Designer.cs">
+      <DependentUpon>EdicionRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Roles\GestionRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Roles\GestionRoles.Designer.cs">
+      <DependentUpon>GestionRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Usuarios\EdicionUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Usuarios\EdicionUsuarios.Designer.cs">
+      <DependentUpon>EdicionUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Usuarios\GestionUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Usuarios\GestionUsuarios.Designer.cs">
+      <DependentUpon>GestionUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Ventas\DetalleVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Ventas\DetalleVenta.Designer.cs">
+      <DependentUpon>DetalleVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Ventas\EdicionVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Ventas\EdicionVenta.Designer.cs">
+      <DependentUpon>EdicionVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Ventas\GestionVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Ventas\GestionVentas.Designer.cs">
+      <DependentUpon>GestionVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -82,11 +296,59 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GUI\Cargos\EdicionCargos.resx">
+      <DependentUpon>EdicionCargos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Cargos\GestionCargos.resx">
+      <DependentUpon>GestionCargos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Compras\DetalleCompra.resx">
+      <DependentUpon>DetalleCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Compras\EdicionCompra.resx">
+      <DependentUpon>EdicionCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Compras\GestionCompras.resx">
+      <DependentUpon>GestionCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Constancias\CapDatIncapacidad.resx">
+      <DependentUpon>CapDatIncapacidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Consultas\EdicionConsulta.resx">
+      <DependentUpon>EdicionConsulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Consultas\GestionConsultas.resx">
+      <DependentUpon>GestionConsultas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Consumibles\EdicionConsumibles.resx">
+      <DependentUpon>EdicionConsumibles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Consumibles\GestionConsumibles.resx">
+      <DependentUpon>GestionConsumibles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Empleados\EdicionEmpleados.resx">
+      <DependentUpon>EdicionEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Empleados\GestionEmpleados.resx">
+      <DependentUpon>GestionEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Especialidades\EdicionEspecialidades.resx">
       <DependentUpon>EdicionEspecialidades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Especialidades\GestionEspecialidades.resx">
       <DependentUpon>GestionEspecialidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Exámenes\EdicionExamen.resx">
+      <DependentUpon>EdicionExamen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Inventarios\GestionInventarios.resx">
+      <DependentUpon>GestionInventarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Marcas\EdicionMarca.resx">
+      <DependentUpon>EdicionMarca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Marcas\GestionMarcas.resx">
+      <DependentUpon>GestionMarcas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Medicos\EdicionMedicos.resx">
       <DependentUpon>EdicionMedicos.cs</DependentUpon>
@@ -94,9 +356,52 @@
     <EmbeddedResource Include="GUI\Medicos\GestionMedicos.resx">
       <DependentUpon>GestionMedicos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Opciones\EdicionOpciones.resx">
+      <DependentUpon>EdicionOpciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Opciones\GestionOpciones.resx">
+      <DependentUpon>GestionOpciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Pacientes\EdicionPacientes.resx">
+      <DependentUpon>EdicionPacientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Pacientes\GestionPacientes.resx">
+      <DependentUpon>GestionPacientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Permisos\GestionPermisos.resx">
+      <DependentUpon>GestionPermisos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Proveedores\EdicionProveedor.resx">
+      <DependentUpon>EdicionProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Proveedores\GestionProveedores.resx">
+      <DependentUpon>GestionProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Roles\EdicionRoles.resx">
+      <DependentUpon>EdicionRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Roles\GestionRoles.resx">
+      <DependentUpon>GestionRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Usuarios\EdicionUsuarios.resx">
+      <DependentUpon>EdicionUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Usuarios\GestionUsuarios.resx">
+      <DependentUpon>GestionUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Ventas\DetalleVenta.resx">
+      <DependentUpon>DetalleVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Ventas\EdicionVenta.resx">
+      <DependentUpon>EdicionVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Ventas\GestionVentas.resx">
+      <DependentUpon>GestionVentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +413,44 @@
       <Project>{314598dd-123c-4a42-9244-696c240ed2d4}</Project>
       <Name>DBManager</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Informes\Informes.csproj">
+      <Project>{8071bb63-08f4-46aa-8e46-a4bbeb68537a}</Project>
+      <Name>Informes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SessionManager\SessionManager.csproj">
+      <Project>{95c153fe-cf5e-411e-a0bf-ddc37046a993}</Project>
+      <Name>SessionManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\archive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\archive1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delivery-truck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open-folder-with-document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stethoscope.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hand.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
